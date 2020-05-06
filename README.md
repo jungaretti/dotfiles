@@ -16,4 +16,4 @@ cd dotfiles
 
 ## Built With
 
-- [Dotbot](https://github.com/anishathalye/dotbot): A tool that bootstraps your dotfiles
+- [Dotbot](https://github.com/anishathalye/dotbot)

@@ -1,6 +1,6 @@
 # This is Git's per-user configuration file.
 [user]
-	name = James Ungaretti
+	name = JP Ungaretti
 	email = hello@jungaretti.com
 [include]
 	path = .gitconfig.local

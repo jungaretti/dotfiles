@@ -6,6 +6,10 @@ Dotfiles that make anywhere feel like `$HOME`.
 
 I use Dotbot to install my dotfiles. It's an elegant, decently-lightweight solution that works well for me.
 
+### Prerequisites
+
+[Oh My Zsh](https://github.com/ohmyzsh/ohmyzsh) for customizing Zsh.
+
 ### Installing
 
 ```shell

@@ -1,0 +1,8 @@
+" Enable syntax highlighting
+syntax enable
+
+" Show line numbers
+set number
+
+" Highlight search results
+set hlsearch

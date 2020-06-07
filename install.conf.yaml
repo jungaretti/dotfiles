@@ -2,4 +2,5 @@
 
 - link:
     ~/.gitconfig: src/git/gitconfig
+    ~/.vimrc: src/vim/vimrc
     ~/.zshrc: src/zsh/zshrc

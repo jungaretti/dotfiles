@@ -1,6 +1,7 @@
-# This is Git's per-user configuration file.
+[include]
+	path = .gitconfig.local
 [user]
 	name = JP Ungaretti
 	email = hello@jungaretti.com
-[include]
-	path = .gitconfig.local
+[pull]
+	rebase = true

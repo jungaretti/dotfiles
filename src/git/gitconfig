@@ -4,4 +4,4 @@
 	name = JP Ungaretti
 	email = hello@jungaretti.com
 [pull]
-	rebase = true
+	rebase = false

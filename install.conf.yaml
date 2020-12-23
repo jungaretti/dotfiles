@@ -4,5 +4,11 @@
     ~/.gitconfig: src/git/gitconfig
     ~/.vimrc: src/vim/vimrc
     ~/.zshrc: src/zsh/zshrc
+    ~/.config/crestic/crestic.cfg:
+        path: src/restic/crestic.cfg
+        create: true
+    ~/.config/restic/exclude.txt:
+        path: src/restic/exclude.txt
+        create: true
     ~/.gnupg/gpg-agent.conf:
         path: src/gnupg/gpg-agent.conf

@@ -1,0 +1,14 @@
+.Trash
+Library
+
+.cargo
+.rustup
+
+.fnm
+.npm
+node_modules
+
+*.fcpbundle/**/Render Files
+Photos Library.photoslibrary
+
+*.icloud

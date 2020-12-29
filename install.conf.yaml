@@ -12,5 +12,9 @@
         if: 'command -v restic'
         path: src/restic/exclude.txt
         create: true
+    ~/.config/topgrade.toml:
+      if: "command -v topgrade"
+      path: src/topgrade/topgrade.toml
+      create: true
     ~/.gnupg/gpg-agent.conf:
         path: src/gnupg/gpg-agent.conf

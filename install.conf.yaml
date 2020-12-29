@@ -17,4 +17,5 @@
       path: src/topgrade/topgrade.toml
       create: true
     ~/.gnupg/gpg-agent.conf:
+      if: "command -v gpg"
       path: src/gnupg/gpg-agent.conf

@@ -5,16 +5,16 @@
     ~/.vimrc: src/vim/vimrc
     ~/.zshrc: src/zsh/zshrc
     ~/.config/crestic/crestic.cfg:
-        if: 'command -v crestic'
-        path: src/restic/crestic.cfg
-        create: true
+      if: "command -v crestic"
+      path: src/restic/crestic.cfg
+      create: true
     ~/.config/restic/exclude.txt:
-        if: 'command -v restic'
-        path: src/restic/exclude.txt
-        create: true
+      if: "command -v restic"
+      path: src/restic/exclude.txt
+      create: true
     ~/.config/topgrade.toml:
       if: "command -v topgrade"
       path: src/topgrade/topgrade.toml
       create: true
     ~/.gnupg/gpg-agent.conf:
-        path: src/gnupg/gpg-agent.conf
+      path: src/gnupg/gpg-agent.conf

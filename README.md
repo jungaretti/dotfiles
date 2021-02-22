@@ -82,9 +82,11 @@ cd ~/.dotfiles
 ./install.bash
 ```
 
-We're nearly finished! Our last step is to install _special_ tools.
+### Decorating
 
-##### rustup
+Our last step is to install _special_ tools.
+
+#### rustup
 
 [Install rustup.](https://rustup.rs/)
 
@@ -93,15 +95,17 @@ We're nearly finished! Our last step is to install _special_ tools.
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 
-##### fnm
+#### fnm
 
 [Install fnm.](https://github.com/Schniz/fnm) Then, install Node.js!
 
 ```shell
 cargo install fnm
-```
+echo 'eval "$(fnm env)"' >> ~/.zprofile
 
-Be sure to add `eval "$(fnm env)"` to `~/.zprofile` or `~/.zshenv`.
+eval "$(fnm env)"
+fnm install --lts
+```
 
 ## Built With
 

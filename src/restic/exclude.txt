@@ -3,6 +3,7 @@ Library
 
 .cargo
 .rustup
+.vscode
 
 .fnm
 .npm

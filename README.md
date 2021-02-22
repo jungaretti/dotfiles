@@ -95,7 +95,7 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 ##### fnm
 
-[Install fnm.](https://github.com/Schniz/fnm). Then, install Node.js!
+[Install fnm.](https://github.com/Schniz/fnm) Then, install Node.js!
 
 ```shell
 cargo install fnm

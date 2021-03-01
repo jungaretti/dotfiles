@@ -4,22 +4,24 @@ Dotfiles that make anywhere feel like `$HOME`.
 
 ## Getting Started
 
-Ready to set up a new computer for me? Grab your terminal and let's get started!
+Ready to set up a new macOS or Arch Linux computer for me? Grab your terminal and let's get started!
 
 ### Moving In
 
-Let's start by installing the essentials. I'm a macOS and Arch Linux user, so you'll see guides for both.
-
-First things first, gain access to our data. Set up our password manager and generate a new SSH key. Be sure to register this SSH key before cloning any more repos.
+First things first, gain access to our data. Set up our password manager and generate a new SSH key. Be sure to register this SSH key with GitHub before cloning any more repos.
 
 ```shell
 ssh-keygen -m PEM -t rsa -b 4096
 # Check out ~/.ssh/id_rsa.pub
 ```
 
-Go ahead and clone (or move) this repo to `~/.dotfiles`.
+Next, clone or move this repo to `~/.dotfiles`.
 
 ```shell
+# Ideal method (using SSH)
+git@github.com:jungaretti/dotfiles.git ~/.dotfiles
+
+# Less-ideal method (using HTTPS)
 git clone https://github.com/jungaretti/dotfiles.git ~/.dotfiles
 ```
 
@@ -36,15 +38,15 @@ git clone git@github.com:jungaretti/stuff-macos.git
 cd stuff-macos
 
 # Install mas-cli
-`brew install mas`
+brew install mas
 
-# Install everything else (this takes quite a while)
+# Install everything else (this takes quite a long time)
 ./install.sh src/Brewfile
 ```
 
 ###### Arch Linux
 
-`pacman -Syu` and `pacman -S base-devel git zsh`. Then, grab your list of programs or `git clone git@github.com:jungaretti/stuff-arch-linux.git`.
+Install essential packages with `pacman -Syu base-devel git zsh`. Then, grab your list of programs or `git clone git@github.com:jungaretti/stuff-arch-linux.git`.
 
 ```shell
 git clone git@github.com:jungaretti/stuff-arch-linux.git
@@ -58,6 +60,7 @@ cd stuff-arch-linux
 ```shell
 git clone https://aur.archlinux.org/yay.git
 cd yay
+
 makepkg -si
 ```
 
@@ -68,7 +71,7 @@ makepkg -si
 ```shell
 sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
 
-# Make sure to set the default shell
+# Use chsh if you're using The Cloud™ or don't have a user password
 sudo chsh -s /bin/zsh jungaretti
 ```
 
@@ -91,7 +94,6 @@ Our last step is to install _special_ tools.
 [Install rustup.](https://rustup.rs/)
 
 ```shell
-# You should probably check the website
 curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 ```
 

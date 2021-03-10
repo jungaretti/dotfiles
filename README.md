@@ -19,7 +19,7 @@ Next, clone or move this repo to `~/.dotfiles`.
 
 ```shell
 # Ideal method (using SSH)
-git@github.com:jungaretti/dotfiles.git ~/.dotfiles
+git clone git@github.com:jungaretti/dotfiles.git ~/.dotfiles
 
 # Less-ideal method (using HTTPS)
 git clone https://github.com/jungaretti/dotfiles.git ~/.dotfiles

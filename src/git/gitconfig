@@ -5,3 +5,5 @@
 	email = hello@jungaretti.com
 [pull]
 	rebase = false
+[init]
+	defaultBranch = main

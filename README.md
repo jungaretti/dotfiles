@@ -109,6 +109,21 @@ eval "$(fnm env)"
 fnm install --lts
 ```
 
+### Settling In
+
+#### restic
+
+I use [restic](https://github.com/restic/restic) and [crestic](https://github.com/nils-werner/crestic) to back up my stuff to [Backblaze B2](https://www.backblaze.com/b2/cloud-storage.html). **You need to export a few shell variables in order for this to work correctly.** Add the following lines to your `.zshenv` (or whatever file you use to configure your shell) and paste the appropriate values from Backblaze and your password manager.
+
+```
+# Backblaze application key
+export B2_ACCOUNT_ID=KEY_ID
+export B2_ACCOUNT_KEY=APPLICATION_KEY
+
+# restic repository password
+export RESTIC_PASSWORD=PASSWORD
+```
+
 ## Built With
 
 - [Dotbot](https://github.com/anishathalye/dotbot)

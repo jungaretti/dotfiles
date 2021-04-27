@@ -98,6 +98,8 @@ source $ZSH/oh-my-zsh.sh
 # alias zshconfig="mate ~/.zshrc"
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
-export EDITOR=vim
+EDITOR=vim
+export EDITOR
 
-export GPG_TTY=$(tty)
+GPG_TTY=$(tty)
+export GPG_TTY

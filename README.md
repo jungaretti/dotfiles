@@ -8,14 +8,14 @@ Ready to set up a new macOS or Arch Linux computer for me? Grab your terminal an
 
 ### Moving In
 
-First things first, gain access to our data. Set up our password manager and generate a new SSH key. Be sure to register this SSH key with GitHub before cloning any more repos.
+First things first, gain access to your data. Set up your password manager and generate a new SSH key. Be sure to register this fresh SSH public key with GitHub before cloning any more repos.
 
 ```shell
 ssh-keygen -m PEM -t rsa -b 4096
 # Check out ~/.ssh/id_rsa.pub
 ```
 
-Next, clone or move this repo to `~/.dotfiles`.
+Then, clone or move this repo to `~/.dotfiles`.
 
 ```shell
 # Ideal method (using SSH)
@@ -25,13 +25,13 @@ git clone git@github.com:jungaretti/dotfiles.git ~/.dotfiles
 git clone https://github.com/jungaretti/dotfiles.git ~/.dotfiles
 ```
 
-### Assembly
+### Unpacking
 
-Now that we're moved in, let's set up our stuff! We'll install everything using [Homebrew](https://github.com/Homebrew/brew) on macOS and [pacman](https://wiki.archlinux.org/index.php/Pacman) on Arch Linux.
+Next, install everything using [Homebrew](https://github.com/Homebrew/brew) on macOS and [pacman](https://wiki.archlinux.org/index.php/Pacman) on Arch Linux.
 
 ###### macOS
 
-[Install Homebrew.](https://brew.sh/) Next, grab your list of applications or `git clone git@github.com:jungaretti/stuff-macos.git`.
+[Install Homebrew.](https://brew.sh/) Next, grab your list of favorite applications or `git clone git@github.com:jungaretti/stuff-macos.git`.
 
 ```shell
 git clone git@github.com:jungaretti/stuff-macos.git
@@ -41,12 +41,12 @@ cd stuff-macos
 brew install mas
 
 # Install everything else (this takes quite a long time)
-./install.sh src/Brewfile
+./install.sh
 ```
 
 ###### Arch Linux
 
-Install essential packages with `pacman -Syu base-devel git zsh`. Then, grab your list of programs or `git clone git@github.com:jungaretti/stuff-arch-linux.git`.
+Install essential packages with `pacman -Syu base-devel git zsh`. Then, grab your list of favorite programs or `git clone git@github.com:jungaretti/stuff-arch-linux.git`.
 
 ```shell
 git clone git@github.com:jungaretti/stuff-arch-linux.git
@@ -75,7 +75,7 @@ sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.
 sudo chsh -s /bin/zsh jungaretti
 ```
 
-Now it's time to install our dotfiles. I use Dotbot to install my dotfiles. It's an elegant and simple solution that world well for me.
+Now it's time to "install" your dotfiles. I use Dotbot to install my dotfiles; it's an elegant and simple solution that works well for me.
 
 ```shell
 # Clean up after Oh My Zsh

@@ -4,6 +4,9 @@
     ~/.gitconfig: src/git/gitconfig
     ~/.vimrc: src/vim/vimrc
     ~/.zshrc: src/zsh/zshrc
+    ~/.config/gh/config.yml:
+      path: src/gh/config.yml
+      create: true
     ~/.config/crestic/crestic.cfg:
       path: src/restic/crestic.cfg
       create: true

@@ -13,5 +13,8 @@
     ~/.config/topgrade.toml:
       path: src/topgrade/topgrade.toml
       create: true
+    ~/.config/i3/config:
+      path: src/i3/config
+      create: true
     ~/.gnupg/gpg-agent.conf:
       path: src/gnupg/gpg-agent.conf

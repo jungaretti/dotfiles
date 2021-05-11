@@ -2,7 +2,7 @@
 syntax enable
 
 " Show line numbers
-" set number
+"set number
 
 " Highlight search results
-" set hlsearch
+set hlsearch

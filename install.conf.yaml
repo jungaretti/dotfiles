@@ -19,5 +19,8 @@
     ~/.config/i3/config:
       path: src/i3/config
       create: true
+    ~/.config/termite/config:
+      path: src/termite/config
+      create: true
     ~/.gnupg/gpg-agent.conf:
       path: src/gnupg/gpg-agent.conf

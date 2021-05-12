@@ -1,0 +1,24 @@
+theme = "nord-dark"
+icons = "awesome"
+
+[[block]]
+block = "focused_window"
+max_width = 50
+show_marks = "visible"
+
+[[block]]
+block = "cpu"
+interval = 1
+
+[[block]]
+block = "memory"
+display_type = "memory"
+format_mem = "{mem_total_used_percents}"
+format_swap = "{swap_used_percents}"
+
+[[block]]
+block = "time"
+format = "%a %Y-%m-%d %R %p"
+timezone = "US/Central"
+interval = 60
+locale = "en_US"

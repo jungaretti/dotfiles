@@ -1,29 +1,32 @@
 - clean: ["~"]
 
 - link:
-    ~/.gitconfig: src/git/gitconfig
-    ~/.vimrc: src/vim/vimrc
-    ~/.zshrc: src/zsh/zshrc
+    ~/.gitconfig:
+        path: src/git/gitconfig
+    ~/.vimrc:
+        path: src/vim/vimrc
+    ~/.zshrc:
+        path: src/zsh/zshrc
     ~/.config/gh/config.yml:
-      path: src/gh/config.yml
-      create: true
+        path: src/gh/config.yml
+        create: true
     ~/.config/crestic/crestic.cfg:
-      path: src/restic/crestic.cfg
-      create: true
+        path: src/restic/crestic.cfg
+        create: true
     ~/.config/restic/exclude.txt:
-      path: src/restic/exclude.txt
-      create: true
+        path: src/restic/exclude.txt
+        create: true
     ~/.config/topgrade.toml:
-      path: src/topgrade/topgrade.toml
-      create: true
+        path: src/topgrade/topgrade.toml
+        create: true
     ~/.config/i3/config:
-      path: src/i3/config
-      create: true
+        path: src/i3/config
+        create: true
     ~/.config/i3status-rust/config.toml:
-      path: src/i3status-rust/config.toml
-      create: true
+        path: src/i3status-rust/config.toml
+        create: true
     ~/.config/termite/config:
-      path: src/termite/config
-      create: true
+        path: src/termite/config
+        create: true
     ~/.gnupg/gpg-agent.conf:
-      path: src/gnupg/gpg-agent.conf
+        path: src/gnupg/gpg-agent.conf

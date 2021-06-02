@@ -28,5 +28,15 @@
     ~/.config/termite/config:
         path: src/termite/config
         create: true
+    ~/.config/Code/User/settings.json:
+        path: src/code/settings.json
+        if: '[ "$(uname -s)" = "Linux" ]'
+        create: true
+    ~/.config/Code/User/keybindings.json:
+        path: src/code/keybindings.json
+        if: '[ "$(uname -s)" = "Linux" ]'
+        create: true
+    # gpg directory has special permissions
     ~/.gnupg/gpg-agent.conf:
         path: src/gnupg/gpg-agent.conf
+        if: 'gpg --version'

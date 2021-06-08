@@ -65,7 +65,9 @@ makepkg -si
 [Install Oh My Zsh.](https://ohmyz.sh/) It's not my favorite, but it gets the job done.
 
 ```shell
-sh -c "$(curl -fsSL https://raw.github.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+gh repo clone ohmyzsh/ohmyzsh
+cd ohmyzsh
+./tools/install.sh
 
 # Use chsh if you're using The Cloud™ or don't have a user password
 sudo chsh -s /bin/zsh jungaretti

@@ -37,6 +37,9 @@
     ~/.config/alacritty/alacritty.yml:
         path: src/alacritty/alacritty.yml
         create: true
+    ~/.config/fontconfig/fonts.conf:
+        path: src/fontconfig/fonts.conf
+        create: true
     ~/.gnupg/gpg-agent.conf:
         path: src/gnupg/gpg-agent.conf
         if: 'gpg --version'

@@ -34,8 +34,8 @@
     ~/.config/rofi/config:
         path: src/rofi/config
         create: true
-    ~/.config/termite/config:
-        path: src/termite/config
+    ~/.config/alacritty/alacritty.yml:
+        path: src/alacritty/alacritty.yml
         create: true
     ~/.gnupg/gpg-agent.conf:
         path: src/gnupg/gpg-agent.conf

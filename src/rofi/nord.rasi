@@ -13,11 +13,11 @@ configuration {
     lines: 6;
     columns: 2;
 
-    display-ssh:    "SSH";
-    display-run:    "RUN";
-    display-drun:   "DRUN";
-    display-window: "WIN";
-    display-combi:  "COMBI";
+    display-ssh:    "🎮";
+    display-run:    "⚡";
+    display-drun:   "⚡";
+    display-window: "🔦";
+    display-combi:  "🐫";
     show-icons:     true;
 }
 

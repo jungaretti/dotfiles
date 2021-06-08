@@ -8,7 +8,7 @@ Ready to set up a new macOS or Arch Linux computer for me? Grab your terminal an
 
 ### Moving In
 
-First things first, gain access to your data. Set up your password manager and generate a new SSH key. Be sure to register this fresh SSH public key with GitHub before cloning any more repos.
+First things first, gain access to your data. Sign into your password manager and generate a new SSH key. Upload this fresh SSH key to GitHub before cloning any repos. You can upload without a browser using [GitHub CLI](https://cli.github.com/manual/).
 
 ```shell
 ssh-keygen -m PEM -t rsa -b 4096

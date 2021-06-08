@@ -7,6 +7,9 @@
         path: src/vim/vimrc
     ~/.zshrc:
         path: src/zsh/zshrc
+    ~/.xinitrc:
+        path: src/xinit/xinitrc
+        if: 'command -v i3'
     ~/.config/gh/config.yml:
         path: src/gh/config.yml
         create: true

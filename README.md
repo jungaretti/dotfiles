@@ -8,21 +8,17 @@ Ready to set up a new macOS or Arch Linux computer for me? Grab your terminal an
 
 ### Moving In
 
-First things first, gain access to your data. Sign into your password manager and generate a new SSH key. Upload this fresh SSH key to GitHub before cloning any repos. You can upload without a browser using [GitHub CLI](https://cli.github.com/manual/).
+First things first, gain access to your data. Sign into your password manager and generate a new SSH key. Upload this fresh SSH key to GitHub before cloning any repos. Clone or move this repo to `~/.dotfiles`.
+
+Use the [GitHub CLI](https://cli.github.com/manual/) to upload your SSH key and to clone repos.
 
 ```shell
 ssh-keygen -m PEM -t rsa -b 4096
 # Check out ~/.ssh/id_rsa.pub
-```
 
-Then, clone or move this repo to `~/.dotfiles`.
+gh auth login
 
-```shell
-# Ideal method (using SSH)
-git clone git@github.com:jungaretti/dotfiles.git ~/.dotfiles
-
-# Less-ideal method (using HTTPS)
-git clone https://github.com/jungaretti/dotfiles.git ~/.dotfiles
+gh repo clone jungaretti/dotfiles ~/.dotfiles
 ```
 
 ### Unpacking
@@ -31,10 +27,10 @@ Next, install everything using [Homebrew](https://github.com/Homebrew/brew) on m
 
 ###### macOS
 
-[Install Homebrew.](https://brew.sh/) Next, grab your list of favorite applications or `git clone git@github.com:jungaretti/stuff-macos.git`.
+[Install Homebrew.](https://brew.sh/) Next, grab your list of favorite applications or `jungaretti/stuff-macos`.
 
 ```shell
-git clone git@github.com:jungaretti/stuff-macos.git
+gh repo clone jungaretti/stuff-macos
 cd stuff-macos
 
 # Install mas-cli
@@ -46,10 +42,10 @@ brew install mas
 
 ###### Arch Linux
 
-Install essential packages with `pacman -Syu base-devel git zsh`. Then, grab your list of favorite programs or `git clone git@github.com:jungaretti/stuff-arch-linux.git`.
+Install essential packages with `pacman -Syu base-devel git zsh`. Then, grab your list of favorite programs or `jungaretti/stuff-arch-linux`.
 
 ```shell
-git clone git@github.com:jungaretti/stuff-arch-linux.git
+gh repo clone jungaretti/stuff-arch-linux
 cd stuff-arch-linux
 
 ./install.sh src/Pacfile

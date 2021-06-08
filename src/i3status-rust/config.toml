@@ -1,5 +1,5 @@
 [theme]
-name = "nord-dark"
+file = "badger.toml"
 
 [icons]
 name = "none"
@@ -9,22 +9,27 @@ block = "focused_window"
 max_width = 50
 show_marks = "visible"
 [block.theme_overrides]
-idle_fg = "#eceff4"
-idle_bg = "#5e81ac"
+idle_bg = "#4c566a" #nord3
 
 [[block]]
 block = "cpu"
 interval = 1
+format = "{utilization}"
+[block.theme_overrides]
+idle_bg = "#434c5e" #nord2
 
 [[block]]
 block = "memory"
+interval = 1
 display_type = "memory"
-format_mem = "{mem_total_used_percents}"
+format_mem = "{mem_used_percents}"
 format_swap = "{swap_used_percents}"
+[block.theme_overrides]
+idle_bg = "#3b4252" #nord1
 
 [[block]]
 block = "time"
-format = "%a %Y-%m-%d %I:%M:%S %p"
+format = "%Y-%m-%d %I:%M:%S %p"
 timezone = "US/Central"
 interval = 1
 locale = "en_US"

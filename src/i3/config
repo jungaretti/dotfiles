@@ -184,8 +184,11 @@ bindsym $mod+r mode "resize"
 # start i3status-rust
 bar {
     position top
-    font "pango: Source Code Pro Semibold 10"
     status_command /usr/bin/i3status-rs ~/.config/i3status-rust/config.toml
+    font "pango: Source Code Pro Semibold 10"
+    colors {
+        background "#2e3440" #nord0
+    }
 }
 
 # start notification daemon

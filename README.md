@@ -12,11 +12,13 @@ First things first, gain access to your data. Sign into your password manager an
 
 Use the [GitHub CLI](https://cli.github.com/manual/) to upload your SSH key and to clone repos.
 
-```shell
-ssh-keygen -m PEM -t rsa -b 4096
+```bash
 # Check out ~/.ssh/id_rsa.pub
+ssh-keygen -m PEM -t rsa -b 4096
 
 gh auth login
+
+gh ssh-key add -t "myfavoritecomputer"
 
 gh repo clone jungaretti/dotfiles ~/.dotfiles
 ```

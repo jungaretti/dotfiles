@@ -42,5 +42,3 @@
         create: true
     ~/.gnupg/gpg-agent.conf:
         path: src/gnupg/gpg-agent.conf
-        if: 'gpg --version'
-        create: true

@@ -25,6 +25,12 @@
     ~/.config/i3status-rust/config.toml:
         path: src/i3status-rust/config.toml
         create: true
+    ~/.config/rofi/nord.rasi:
+        path: src/rofi/nord.rasi
+        create: true
+    ~/.config/rofi/config:
+        path: src/rofi/config
+        create: true
     ~/.config/termite/config:
         path: src/termite/config
         create: true

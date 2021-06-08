@@ -1,0 +1,3 @@
+configuration {
+        rofi.theme: nord
+}

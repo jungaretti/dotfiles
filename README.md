@@ -50,7 +50,7 @@ Install essential packages with `pacman -Syu base-devel git zsh`. Then, grab you
 gh repo clone jungaretti/stuff-arch-linux
 cd stuff-arch-linux
 
-./install.sh src/Pacfile
+./install.sh
 ```
 
 [Install Yay](https://github.com/Jguer/yay) to automate AUR installations.

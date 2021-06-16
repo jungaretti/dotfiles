@@ -16,9 +16,9 @@ Use the [GitHub CLI](https://cli.github.com/manual/) to upload your SSH key and 
 # Check out ~/.ssh/id_rsa.pub
 ssh-keygen -m PEM -t rsa -b 4096
 
-gh auth login
+gh auth login -s write:public_key
 
-gh ssh-key add -t "myfavoritecomputer"
+gh ssh-key add ~/.ssh/id_rsa.pub -t "myfavoritecomputer"
 
 gh repo clone jungaretti/dotfiles ~/.dotfiles
 ```

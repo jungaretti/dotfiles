@@ -1,59 +1,61 @@
 - clean: ["~"]
 
 - link:
+    # essentials
     ~/.gitconfig:
-        path: src/git/gitconfig
+      path: src/git/gitconfig
     ~/.vimrc:
-        path: src/vim/vimrc
+      path: src/vim/vimrc
     ~/.zshrc:
-        path: src/zsh/zshrc
-
-- link:
-    # Alacritty
+      path: src/zsh/zshrc
+    # programs
     ~/.config/alacritty/alacritty.yml:
-        path: src/alacritty/alacritty.yml
-        create: true
-    # GitHub CLI
+      path: src/alacritty/alacritty.yml
+      create: true
     ~/.config/gh/config.yml:
-        path: src/gh/config.yml
-        create: true
-    # GNU Privacy Guard
+      path: src/gh/config.yml
+      create: true
     ~/.gnupg/gpg-agent.conf:
-        path: src/gnupg/gpg-agent.conf
-    # restic
+      path: src/gnupg/gpg-agent.conf
+      create: false
     ~/.config/crestic/crestic.cfg:
-        path: src/restic/crestic.cfg
-        create: true
+      path: src/restic/crestic.cfg
+      create: true
     ~/.config/restic/exclude.txt:
-        path: src/restic/exclude.txt
-        create: true
-    # Topgrade
+      path: src/restic/exclude.txt
+      create: true
     ~/.config/topgrade.toml:
-        path: src/topgrade/topgrade.toml
-        create: true
-
-- link:
+      path: src/topgrade/topgrade.toml
+      create: true
+    # i3 and friends
     ~/.xinitrc:
-        path: src/xinit/xinitrc
-        if: 'command -v i3'
+      path: src/xinit/xinitrc
+      if: "command -v i3"
     ~/.config/fontconfig/fonts.conf:
-        path: src/fontconfig/fonts.conf
-        create: true
+      path: src/fontconfig/fonts.conf
+      if: "command -v i3"
+      create: true
     ~/.config/i3/config:
-        path: src/i3/config
-        create: true
+      path: src/i3/config
+      if: "command -v i3"
+      create: true
     ~/.config/i3status-rust/config.toml:
-        path: src/i3status-rust/config.toml
-        create: true
+      path: src/i3status-rust/config.toml
+      if: "command -v i3"
+      create: true
     ~/.config/i3status-rust/themes/badger.toml:
-        path: src/i3status-rust/themes/badger.toml
-        create: true
+      path: src/i3status-rust/themes/badger.toml
+      if: "command -v i3"
+      create: true
     ~/.config/rofi/config:
-        path: src/rofi/config
-        create: true
+      path: src/rofi/config
+      if: "command -v i3"
+      create: true
     ~/.config/rofi/nord.rasi:
-        path: src/rofi/nord.rasi
-        create: true
+      path: src/rofi/nord.rasi
+      if: "command -v i3"
+      create: true
     ~/.config/dunst/dunstrc:
-        path: src/dunst/dunstrc
-        create: true
+      path: src/dunst/dunstrc
+      if: "command -v i3"
+      create: true

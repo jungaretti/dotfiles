@@ -1,9 +1,9 @@
 syntax enable
 
 set expandtab
-
-" Show line numbers
-"set number
+set shiftwidth=4
+set autoindent
+set smartindent
 
 " Highlight search results
 set hlsearch

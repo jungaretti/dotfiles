@@ -103,9 +103,13 @@ curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
 
 ```shell
 cargo install fnm
-echo 'eval "$(fnm env)"' >> ~/.zprofile
 
+# Set up current shell
 eval "$(fnm env)"
+
+# Set up future shells
+echo 'eval "$(fnm env)"' >> .zshenv
+
 fnm install --lts
 ```
 

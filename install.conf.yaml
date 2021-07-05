@@ -1,61 +1,53 @@
 - clean: ["~"]
 
 - link:
-    # essentials
     ~/.gitconfig:
       path: src/git/gitconfig
     ~/.vimrc:
       path: src/vim/vimrc
     ~/.zshrc:
       path: src/zsh/zshrc
-    # programs
-    ~/.config/alacritty/alacritty.yml:
-      path: src/alacritty/alacritty.yml
+
+    ~/.config/topgrade.toml:
+      path: src/topgrade/topgrade.toml
       create: true
-    ~/.config/gh/config.yml:
-      path: src/gh/config.yml
-      create: true
-    ~/.gnupg/gpg-agent.conf:
-      path: src/gnupg/gpg-agent.conf
-      create: false
     ~/.config/crestic/crestic.cfg:
       path: src/restic/crestic.cfg
       create: true
     ~/.config/restic/exclude.txt:
       path: src/restic/exclude.txt
       create: true
-    ~/.config/topgrade.toml:
-      path: src/topgrade/topgrade.toml
+    ~/.config/gh/config.yml:
+      path: src/gh/config.yml
       create: true
-    # i3 and friends
+    ~/.config/alacritty/alacritty.yml:
+      path: src/alacritty/alacritty.yml
+      create: true
+    ~/.gnupg/gpg-agent.conf:
+      path: src/gnupg/gpg-agent.conf
+      if: "gpg -k" # ensures gpg is initialized
+      create: false
+
     ~/.xinitrc:
       path: src/xinit/xinitrc
-      if: "command -v i3"
+      if: "[ `uname -s` = Linux ]"
     ~/.config/fontconfig/fonts.conf:
       path: src/fontconfig/fonts.conf
-      if: "command -v i3"
+      if: "[ `uname -s` = Linux ]"
       create: true
-    ~/.config/i3/config:
-      path: src/i3/config
-      if: "command -v i3"
+    ~/.config/i3:
+      path: src/i3
+      if: "[ `uname -s` = Linux ]"
       create: true
-    ~/.config/i3status-rust/config.toml:
-      path: src/i3status-rust/config.toml
-      if: "command -v i3"
-      create: true
-    ~/.config/i3status-rust/themes/badger.toml:
-      path: src/i3status-rust/themes/badger.toml
-      if: "command -v i3"
-      create: true
-    ~/.config/rofi/config:
-      path: src/rofi/config
-      if: "command -v i3"
-      create: true
-    ~/.config/rofi/nord.rasi:
-      path: src/rofi/nord.rasi
-      if: "command -v i3"
+    ~/.config/i3status-rust:
+      path: src/i3status-rust
+      if: "[ `uname -s` = Linux ]"
       create: true
     ~/.config/dunst/dunstrc:
       path: src/dunst/dunstrc
-      if: "command -v i3"
+      if: "[ `uname -s` = Linux ]"
+      create: true
+    ~/.config/rofi:
+      path: src/rofi
+      if: "[ `uname -s` = Linux ]"
       create: true

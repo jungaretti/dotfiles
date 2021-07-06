@@ -53,11 +53,11 @@ cd stuff-arch-linux
 ./install.sh
 ```
 
-[Install Paru](https://github.com/morganamilo/paru) to help with AUR installations.
+[Install Yay](https://github.com/Jguer/yay) to help with AUR installations.
 
 ```shell
-git clone https://aur.archlinux.org/paru.git
-cd paru
+git clone https://aur.archlinux.org/yay.git
+cd yay
 
 makepkg -si
 ```

@@ -1,53 +1,56 @@
-- clean: ["~"]
+- clean:
+    ~/:
+    ~/.config:
+      recursive: true
 
 - link:
     ~/.gitconfig:
-      path: src/git/gitconfig
+      path: src/dots/git/gitconfig
     ~/.vimrc:
-      path: src/vim/vimrc
+      path: src/dots/vim/vimrc
     ~/.zshrc:
-      path: src/zsh/zshrc
+      path: src/dots/zsh/zshrc
 
     ~/.config/topgrade.toml:
-      path: src/topgrade/topgrade.toml
+      path: src/dots/topgrade/topgrade.toml
       create: true
     ~/.config/crestic/crestic.cfg:
-      path: src/restic/crestic.cfg
+      path: src/dots/restic/crestic.cfg
       create: true
     ~/.config/restic/exclude.txt:
-      path: src/restic/exclude.txt
+      path: src/dots/restic/exclude.txt
       create: true
     ~/.config/gh/config.yml:
-      path: src/gh/config.yml
+      path: src/dots/gh/config.yml
       create: true
     ~/.config/alacritty/alacritty.yml:
-      path: src/alacritty/alacritty.yml
+      path: src/dots/alacritty/alacritty.yml
       create: true
     ~/.gnupg/gpg-agent.conf:
-      path: src/gnupg/gpg-agent.conf
+      path: src/dots/gnupg/gpg-agent.conf
       if: "gpg -k" # ensures gpg is initialized
       create: false
 
     ~/.xinitrc:
-      path: src/xinit/xinitrc
+      path: src/dots/xinit/xinitrc
       if: "[ `uname -s` = Linux ]"
     ~/.config/fontconfig/fonts.conf:
-      path: src/fontconfig/fonts.conf
+      path: src/dots/fontconfig/fonts.conf
       if: "[ `uname -s` = Linux ]"
       create: true
     ~/.config/i3:
-      path: src/i3
+      path: src/dots/i3
       if: "[ `uname -s` = Linux ]"
       create: true
     ~/.config/i3status-rust:
-      path: src/i3status-rust
+      path: src/dots/i3status-rust
       if: "[ `uname -s` = Linux ]"
       create: true
     ~/.config/dunst/dunstrc:
-      path: src/dunst/dunstrc
+      path: src/dots/dunst/dunstrc
       if: "[ `uname -s` = Linux ]"
       create: true
     ~/.config/rofi:
-      path: src/rofi
+      path: src/dots/rofi
       if: "[ `uname -s` = Linux ]"
       create: true

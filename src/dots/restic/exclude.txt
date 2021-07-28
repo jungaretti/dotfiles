@@ -3,6 +3,8 @@ Downloads
 Library
 OneDrive
 
+.cache
+
 .cargo
 .rustup
 .vscode

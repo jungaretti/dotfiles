@@ -15,7 +15,7 @@
       path: src/dots/topgrade/topgrade.toml
       create: true
     ~/.config/crestic/crestic.cfg:
-      path: src/dots/restic/crestic.cfg
+      path: src/dots/crestic/crestic.cfg
       create: true
     ~/.config/restic/exclude.txt:
       path: src/dots/restic/exclude.txt

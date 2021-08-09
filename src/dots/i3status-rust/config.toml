@@ -30,6 +30,5 @@ idle_bg = "#3b4252" #nord1
 [[block]]
 block = "time"
 format = "%Y-%m-%d %I:%M:%S %p"
-timezone = "US/Central"
 interval = 1
 locale = "en_US"

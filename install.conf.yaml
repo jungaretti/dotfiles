@@ -1,3 +1,5 @@
+# Check out https://github.com/anishathalye/dotbot
+
 - clean:
     ~/:
     ~/.config:
@@ -10,47 +12,48 @@
       path: src/dots/vim/vimrc
     ~/.zshrc:
       path: src/dots/zsh/zshrc
-
-    ~/.config/topgrade.toml:
-      path: src/dots/topgrade/topgrade.toml
-      create: true
-    ~/.config/crestic/crestic.cfg:
-      path: src/dots/crestic/crestic.cfg
-      create: true
-    ~/.config/restic/exclude.txt:
-      path: src/dots/restic/exclude.txt
-      create: true
-    ~/.config/gh/config.yml:
-      path: src/dots/gh/config.yml
-      create: true
-    ~/.config/alacritty/alacritty.yml:
-      path: src/dots/alacritty/alacritty.yml
-      create: true
     ~/.gnupg/gpg-agent.conf:
       path: src/dots/gnupg/gpg-agent.conf
       if: "gpg -k" # ensures gpg is initialized
       create: false
 
+- defaults:
+    link:
+      create: true
+- link:
+    ~/.config/topgrade.toml:
+      path: src/dots/topgrade/topgrade.toml
+    ~/.config/crestic/crestic.cfg:
+      path: src/dots/crestic/crestic.cfg
+    ~/.config/restic/exclude.txt:
+      path: src/dots/restic/exclude.txt
+    ~/.config/gh/config.yml:
+      path: src/dots/gh/config.yml
+    ~/.config/alacritty/alacritty.yml:
+      path: src/dots/alacritty/alacritty.yml
+
+- defaults:
+    link:
+      if: "[ `uname -s` = Linux ]"
+      create: true
+- link:
     ~/.xinitrc:
       path: src/dots/xinit/xinitrc
-      if: "[ `uname -s` = Linux ]"
     ~/.config/fontconfig/fonts.conf:
       path: src/dots/fontconfig/fonts.conf
-      if: "[ `uname -s` = Linux ]"
-      create: true
     ~/.config/i3:
       path: src/dots/i3
-      if: "[ `uname -s` = Linux ]"
-      create: true
     ~/.config/i3status-rust:
       path: src/dots/i3status-rust
-      if: "[ `uname -s` = Linux ]"
-      create: true
     ~/.config/dunst/dunstrc:
       path: src/dots/dunst/dunstrc
-      if: "[ `uname -s` = Linux ]"
-      create: true
     ~/.config/rofi:
       path: src/dots/rofi
-      if: "[ `uname -s` = Linux ]"
-      create: true
+
+- defaults:
+    link:
+      # FIXME: should create, but only on Windows
+      create: false
+- link:
+    ~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1:
+      path: src/dots/powershell/profile.ps1

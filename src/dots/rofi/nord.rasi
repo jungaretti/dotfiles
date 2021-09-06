@@ -1,136 +1,117 @@
-/**
- * Nordic rofi theme
- * Adapted by undiabler <undiabler@gmail.com>
- *
- * Nord Color palette imported from https://www.nordtheme.com/
- *
- */
+/*******************************************************************************
+ * ROFI VERTICAL THEME USING THE NORD COLOR PALETTE 
+ * User                 : ulises-jeremias               
+ * Theme Repo           : https://github.com/ulises-jeremias/rofi-themes
+ * Nord Project Repo    : https://github.com/arcticicestudio/nord
+ *******************************************************************************/
 
 configuration {
-    font: "Source Code Pro Semibold 12";
-    width: 30;
-    line-margin: 10;
-    lines: 6;
-    columns: 2;
-
+    font: "Source Code Pro Medium 12";
     display-ssh:    "🎮";
     display-run:    "⚡";
     display-drun:   "⚡";
     display-window: "🔦";
     display-combi:  "🐫";
-    show-icons:     true;
 }
-
 * {
-	nord0: #2e3440;
-	nord1: #3b4252;
-	nord2: #434c5e;
-	nord3: #4c566a;
+    nord0   : #2e3440;
+    nord1   : #3b4252;
+    nord2   : #434c5e;
+    nord3   : #4c566a;
 
-	nord4: #d8dee9;
-	nord5: #e5e9f0;
-	nord6: #eceff4;
+    nord4   : #d8dee9;
+    nord5   : #e5e9f0;
+    nord6   : #eceff4;
 
-	nord7: #8fbcbb;
-	nord8: #88c0d0;
-	nord9: #81a1c1;
-	nord10: #5e81ac;
-	nord11: #bf616a;
+    nord7   : #8fbcbb;
+    nord8   : #88c0d0;
+    nord9   : #81a1c1;
+    nord10  : #5e81ac;
+    nord11  : #bf616a;
 
-	nord12: #d08770;
-	nord13: #ebcb8b;
-	nord14: #a3be8c;
-	nord15: #b48ead;
+    nord12  : #d08770;
+    nord13  : #ebcb8b;
+    nord14  : #a3be8c;
+    nord15  : #b48ead;
 
-    foreground:  @nord9;
-    backlight:   #ccffeedd;
-    background-color:  transparent;
-    
-    highlight:     underline bold #eceff4;
+    background-color    : @nord1;
+    text-color          : @nord4;
 
-    transparent: rgba(46,52,64,0);
+    margin              : 0;
 }
-
-window {
-    location: center;
-    anchor:   center;
-    transparency: "screenshot";
-    padding: 10px;
-    border:  0px;
-    border-radius: 6px;
-
-    background-color: @transparent;
-    spacing: 0;
-    children:  [mainbox];
-    orientation: horizontal;
+#window {
+    location            : center;
+    y-offset            : -200;
+    width               : 480;
+    background-color    : @nord0;
+    border              : 2;
+    border-color        : @nord8;
 }
-
-mainbox {
-    spacing: 0;
-    children: [ inputbar, message, listview ];
+#mainbox {
+    spacing             : 0;
 }
-
-message {
-    color: @nord0;
-    padding: 5;
-    border-color: @foreground;
-    border:  0px 2px 2px 2px;
-    background-color: @nord7;
+#inputbar {
+    background-color    : @nord0;
+    spacing             : 0;
 }
-
-inputbar {
-    color: @nord6;
-    padding: 11px;
-    background-color: #3b4252;
-
-    border: 1px;
-    border-radius:  6px 6px 0px 0px;
-    border-color: @nord10;
+#prompt {
+    padding             : 12 12 0;
+    background-color    : @nord0;
+    vertical-align      : 0;
 }
-
-entry, prompt, case-indicator {
-    text-font: inherit;
-    text-color:inherit;
+#entry {
+    padding             : 8 0;
+    background-color    : @nord0;
 }
-
-prompt {
-    margin: 0px 0.3em 0em 0em ;
+#case-indicator {
+    padding             : 8;
+    background-color    : @nord0;
 }
-
-listview {
-    padding: 8px;
-    border-radius: 0px 0px 6px 6px;
-    border-color: @nord10;
-    border: 0px 1px 1px 1px;
-    background-color: rgba(46,52,64,0.9);
-    dynamic: false;
+#message {
+    padding             : 0;
 }
-
-element {
-    padding: 3px;
-    vertical-align: 0.5;
-    border-radius: 4px;
-    background-color: transparent;
-    color: @foreground;
-    text-color: rgb(216, 222, 233);
+#textbox {
+    padding             : 8;
+    background-color    : @nord8;
+    text-color          : @nord0;
 }
-
-element selected.normal {
-	background-color: @nord7;
-	text-color: #2e3440;
+#listview {
+    lines               : 8;
+    columns             : 1;
+    fixed-height        : false;
+    spacing             : 0;
 }
-
-button {
-    padding: 6px;
-    color: @foreground;
-    horizontal-align: 0.5;
-
-    border: 2px 0px 2px 2px;
-    border-radius: 4px 0px 0px 4px;
-    border-color: @foreground;
+#element {
+    padding             : 8;
+    spacing             : 8;
 }
-
-button selected normal {
-    border: 2px 0px 2px 2px;
-    border-color: @foreground;
+#element normal normal {
+    text-color          : @nord4;
+}
+#element normal urgent {
+    text-color          : @nord13;
+}
+#element normal active {
+    text-color          : @nord8;
+}
+#element selected normal {
+    background-color    : @nord3;
+}
+#element selected urgent {
+    background-color    : @nord13;
+    text-color          : @nord0;
+}
+#element selected active {
+    background-color    : @nord8;
+    text-color          : @nord0;
+}
+#element-icon {
+    size                : 0.8em;
+    background-color    : transparent;
+}
+#element-text {
+    background-color    : transparent;
+}
+#mode-switcher {
+    padding             : 0;
 }

@@ -49,11 +49,3 @@
       path: src/dots/dunst/dunstrc
     ~/.config/rofi:
       path: src/dots/rofi
-
-- defaults:
-    link:
-      # FIXME: should create, but only on Windows
-      create: false
-- link:
-    ~/Documents/PowerShell/Microsoft.PowerShell_profile.ps1:
-      path: src/dots/powershell/profile.ps1

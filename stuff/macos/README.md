@@ -14,7 +14,7 @@ I use Homebrew to manage my tools and apps. Homebrew Bundle makes it easy to ins
 ### Installing
 
 ```bash
-cd src/stuff/macos
+cd stuff/macos
 
 # This may take a while...
 ./install.sh

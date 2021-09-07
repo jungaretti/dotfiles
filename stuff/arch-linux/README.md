@@ -13,7 +13,7 @@ I use pacman and Yay to manage my tools and apps.
 ### Installing
 
 ```bash
-cd src/stuff/arch-linux
+cd stuff/arch-linux
 
 ./install.sh
 ```

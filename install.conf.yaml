@@ -7,13 +7,13 @@
 
 - link:
     ~/.gitconfig:
-      path: src/dots/git/gitconfig
+      path: dots/git/gitconfig
     ~/.vimrc:
-      path: src/dots/vim/vimrc
+      path: dots/vim/vimrc
     ~/.zshrc:
-      path: src/dots/zsh/zshrc
+      path: dots/zsh/zshrc
     ~/.gnupg/gpg-agent.conf:
-      path: src/dots/gnupg/gpg-agent.conf
+      path: dots/gnupg/gpg-agent.conf
       if: "gpg -k" # ensures gpg is initialized
       create: false
 
@@ -22,15 +22,15 @@
       create: true
 - link:
     ~/.config/topgrade.toml:
-      path: src/dots/topgrade/topgrade.toml
+      path: dots/topgrade/topgrade.toml
     ~/.config/crestic/crestic.cfg:
-      path: src/dots/crestic/crestic.cfg
+      path: dots/crestic/crestic.cfg
     ~/.config/restic/exclude.txt:
-      path: src/dots/restic/exclude.txt
+      path: dots/restic/exclude.txt
     ~/.config/gh/config.yml:
-      path: src/dots/gh/config.yml
+      path: dots/gh/config.yml
     ~/.config/alacritty/alacritty.yml:
-      path: src/dots/alacritty/alacritty.yml
+      path: dots/alacritty/alacritty.yml
 
 - defaults:
     link:
@@ -38,14 +38,14 @@
       create: true
 - link:
     ~/.xinitrc:
-      path: src/dots/xinit/xinitrc
+      path: dots/xinit/xinitrc
     ~/.config/fontconfig/fonts.conf:
-      path: src/dots/fontconfig/fonts.conf
+      path: dots/fontconfig/fonts.conf
     ~/.config/i3:
-      path: src/dots/i3
+      path: dots/i3
     ~/.config/i3status-rust:
-      path: src/dots/i3status-rust
+      path: dots/i3status-rust
     ~/.config/dunst/dunstrc:
-      path: src/dots/dunst/dunstrc
+      path: dots/dunst/dunstrc
     ~/.config/rofi:
-      path: src/dots/rofi
+      path: dots/rofi

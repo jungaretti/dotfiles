@@ -1,10 +1,10 @@
 # Stuff for macOS
 
-Useful stuff for macOS.
+I use Homebrew to manage my tools and apps. Homebrew Bundle makes it easy to install Homebrew packages and GUI applications on macOS.
 
 ## Getting Started
 
-I use Homebrew to manage my tools and apps. Homebrew Bundle makes it easy to install Homebrew packages and GUI applications on macOS.
+> "Ed una lupa, che di tutte brame sembiava carca ne la sua magrezza, e molte genti fé già viver grame" ([Infero I, 49-51](https://digitaldante.columbia.edu/dante/divine-comedy/inferno/inferno-1/)).
 
 ### Prerequisites
 

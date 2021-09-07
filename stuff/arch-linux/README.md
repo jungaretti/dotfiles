@@ -1,10 +1,10 @@
 # Stuff for Arch Linux
 
-Useful stuff for Arch Linux.
+I use pacman and Yay to manage my tools and apps.
 
 ## Getting Started
 
-I use pacman and Yay to manage my tools and apps.
+> "La bufera infernal, che mai non resta, mena li spirti con la sua rapina; voltando e percotendo li molesta" ([Infero V, 31-33](https://digitaldante.columbia.edu/dante/divine-comedy/inferno/inferno-5/)).
 
 ### Prerequisites
 

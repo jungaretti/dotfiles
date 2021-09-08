@@ -1,6 +1,6 @@
 # Dotfiles
 
-_Mia Commedia._ Dotfiles, configs, and lists of my stuff that make anywhere feel like `/home`.
+_Mia Commedia._ Dotfiles, configs, and lists that make anywhere feel like `/home`.
 
 ## Getting Started
 

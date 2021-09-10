@@ -1,22 +1,10 @@
+# See https://github.com/anishathalye/dotbot for the real script
+
 $ErrorActionPreference = "Stop"
 
-$CONFIG = "install.conf.yaml"
-$DOTBOT_DIR = "dotbot"
+# Replace the Target portion with the path (relative or absolute) that the new link refers to
+$path = $HOME + "\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
+# Replace the Link portion with the path to the symbolic link you want to create
+$target = $PSScriptRoot + "\dots\powershell\profile.ps1"
 
-$DOTBOT_BIN = "bin/dotbot"
-$BASEDIR = $PSScriptRoot
-
-Set-Location $BASEDIR
-git -C $DOTBOT_DIR submodule sync --quiet --recursive
-git submodule update --init --recursive $DOTBOT_DIR
-
-foreach ($PYTHON in ('python', 'python3', 'python2')) {
-    # Python redirects to Microsoft Store in Windows 10 when not installed
-    if (& { $ErrorActionPreference = "SilentlyContinue"
-            ![string]::IsNullOrEmpty((&$PYTHON -V))
-            $ErrorActionPreference = "Stop" }) {
-        &$PYTHON $(Join-Path $BASEDIR -ChildPath $DOTBOT_DIR | Join-Path -ChildPath $DOTBOT_BIN) -d $BASEDIR -c $CONFIG $Args
-        return
-    }
-}
-Write-Error "Error: Cannot find Python."
+New-Item -ItemType SymbolicLink -Path $path -Target $target

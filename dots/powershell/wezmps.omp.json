@@ -9,9 +9,10 @@
           "style": "plain",
           "foreground": "#43CCEA",
           "properties": {
-            "prefix": "",
-            "postfix": "",
+            "prefix": "(",
+            "postfix": ") ",
             "branch_icon": "",
+            "display_branch_status": false,
             "display_status": true,
             "branch_identical_icon": "",
             "branch_ahead_icon": "",
@@ -19,7 +20,7 @@
             "branch_gone_icon": "",
             "display_status_detail": false,
             "status_separator_icon": "",
-            "local_working_icon": "⚡ ",
+            "local_working_icon": " ⚡",
             "local_staged_icon": ""
           }
         },

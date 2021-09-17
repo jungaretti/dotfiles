@@ -5,24 +5,32 @@
       "alignment": "left",
       "segments": [
         {
-          "type": "text",
+          "type": "git",
           "style": "plain",
+          "foreground": "#43CCEA",
           "properties": {
             "prefix": "",
-            "text": "%"
+            "postfix": "",
+            "branch_icon": "",
+            "display_status": true,
+            "branch_identical_icon": "",
+            "branch_ahead_icon": "",
+            "branch_behind_icon": "",
+            "branch_gone_icon": "",
+            "display_status_detail": false,
+            "status_separator_icon": "",
+            "local_working_icon": "⚡ ",
+            "local_staged_icon": ""
           }
         },
         {
-          "type": "session",
-          "style": "diamond",
-          "trailing_diamond": "\uE0B4 ",
-          "leading_diamond": "\uE0B6",
-          "foreground": "#9B6BDF",
-          "background": "#424242",
+          "type": "text",
+          "style": "plain",
+          "foreground": "#E5C07B",
           "properties": {
-            "display_host": false,
-            "postfix": " \u276F",
-            "prefix": ""
+            "prefix": "",
+            "postfix": " ",
+            "text": "%"
           }
         }
       ]
@@ -33,107 +41,12 @@
       "segments": [
         {
           "type": "path",
-          "style": "diamond",
-          "trailing_diamond": "\uE0B4",
-          "leading_diamond": "\uE0B6",
+          "style": "plain",
           "foreground": "#3EC669",
-          "background": "#424242",
-          "properties": {
-            "prefix": "\uE5FF ",
-            "postfix": "",
-            "style": "folder"
-          }
-        },
-        {
-          "type": "git",
-          "style": "diamond",
-          "trailing_diamond": "\uE0B4",
-          "leading_diamond": " \uE0B6",
-          "foreground": "#43CCEA",
-          "background": "#424242",
           "properties": {
             "prefix": "",
             "postfix": "",
-            "display_status_detail": false,
-            "branch_icon": ""
-          }
-        },
-        {
-          "type": "python",
-          "style": "diamond",
-          "trailing_diamond": "\uE0B4",
-          "leading_diamond": " \uE0B6",
-          "foreground": "#E4F34A",
-          "background": "#424242",
-          "properties": {
-            "prefix": "\uE235",
-            "postfix": "",
-            "display_version": false
-          }
-        },
-        {
-          "type": "go",
-          "style": "diamond",
-          "trailing_diamond": "\uE0B4",
-          "leading_diamond": " \uE0B6",
-          "foreground": "#7FD5EA",
-          "background": "#424242",
-          "properties": {
-            "prefix": "\uFCD1",
-            "postfix": "",
-            "display_version": false
-          }
-        },
-        {
-          "type": "node",
-          "style": "diamond",
-          "trailing_diamond": "\uE0B4",
-          "leading_diamond": " \uE0B6",
-          "foreground": "#42E66C",
-          "background": "#424242",
-          "properties": {
-            "prefix": "\uE718",
-            "postfix": "",
-            "display_version": false
-          }
-        },
-        {
-          "type": "ruby",
-          "style": "diamond",
-          "trailing_diamond": "\uE0B4",
-          "leading_diamond": " \uE0B6",
-          "foreground": "#E64747",
-          "background": "#424242",
-          "properties": {
-            "prefix": "\uE791",
-            "postfix": "",
-            "display_version": false
-          }
-        },
-        {
-          "type": "java",
-          "style": "diamond",
-          "trailing_diamond": "\uE0B4",
-          "leading_diamond": " \uE0B6",
-          "foreground": "#E64747",
-          "background": "#424242",
-          "properties": {
-            "prefix": "\uE738",
-            "postfix": "",
-            "display_version": false
-          }
-        },
-        {
-          "type": "julia",
-          "style": "diamond",
-          "trailing_diamond": "\uE0B4",
-          "leading_diamond": " \uE0B6",
-          "foreground": "#9B6BDF",
-          "background": "#424242",
-          "properties": {
-            "prefix": "\uE624",
-            "postfix": "",
-            "display_version": false
+            "style": "full"
           }
         }
       ]

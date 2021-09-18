@@ -1,16 +1,16 @@
 # Dotfiles
 
-_Mia Commedia._ Dotfiles, configs, and lists that make anywhere feel like `/home`.
+Dotfiles, configs, and lists that make anywhere feel like `/home`.
 
 ## Getting Started
 
 > "Ond’ io per lo tuo me’ penso e discerno che tu mi segui, e io sarò tua guida, e trarrotti di qui per loco etterno" ([Inferno I, 112-114](https://digitaldante.columbia.edu/dante/divine-comedy/inferno/inferno-1/)).
 
-Benvenuti! Are you ready to set up a new macOS or Arch Linux computer for me? Fire up your favorite terminal and let's get started.
+Are you ready to set up a new macOS, Arch Linux, or Windows computer for me? Fire up your favorite terminal and let's get started.
 
 ### Moving In
 
-First things first, gain access to your data. This will be tough unless you're me. Sign into your password manager and generate a new SSH key using `ssh-keygen`. You'll probably want to share that fresh SSH key with GitHub before cloning any repos.
+First things first, gain access to your data. This will be tough unless you're me. Sign into your password manager and generate a new SSH key using `ssh-keygen`. You'll probably want to share that fresh SSH key with GitHub before cloning any repos. **Do not grant access to corporate organizations on personal devices.**
 
 Pro tip: You can use the [GitHub CLI](https://cli.github.com/manual/) to do that without a browser.
 
@@ -32,7 +32,7 @@ gh repo clone jungaretti/dotfiles ~/Repos/.dotfiles
 
 ### Unpacking
 
-Next, install apps and tools using [Homebrew](https://github.com/Homebrew/brew) on macOS and [pacman](https://wiki.archlinux.org/index.php/Pacman) on Arch Linux.
+Install apps and tools using [Homebrew](https://github.com/Homebrew/brew) on macOS, [pacman](https://wiki.archlinux.org/index.php/Pacman) on Arch Linux, or the [Windows Package Manager](https://docs.microsoft.com/en-us/windows/package-manager/) on Windows.
 
 ###### macOS
 
@@ -63,6 +63,8 @@ rm ~/.zshrc
 
 cd ~/Repos/dotfiles
 ./install.bash
+
+# Run ./install.ps1 as an administrator on Windows
 ```
 
 ### Decorating

@@ -13,9 +13,9 @@
     ~/.zshrc:
       path: dots/zsh/zshrc
     ~/.gnupg/gpg-agent.conf:
-      path: dots/gnupg/gpg-agent.conf
       if: "gpg -k" # ensures gpg is initialized
       create: false
+      path: dots/gnupg/gpg-agent.conf
 
 - defaults:
     link:

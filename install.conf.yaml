@@ -12,6 +12,7 @@
       path: dots/vim/vimrc
     ~/.zshrc:
       path: dots/zsh/zshrc
+      force: true
     ~/.gnupg/gpg-agent.conf:
       if: "gpg -k" # ensures gpg is initialized
       create: false
@@ -20,6 +21,7 @@
 - defaults:
     link:
       create: true
+
 - link:
     ~/.config/topgrade.toml:
       path: dots/topgrade/topgrade.toml
@@ -36,6 +38,7 @@
     link:
       if: "[ `uname -s` = Linux ]"
       create: true
+
 - link:
     ~/.xinitrc:
       path: dots/xinit/xinitrc

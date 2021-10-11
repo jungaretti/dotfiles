@@ -48,10 +48,13 @@ cask "istat-menus"
 cask "little-snitch"
 cask "metaz"
 cask "monodraw"
+cask "mos"
 cask "obs"
 cask "osxfuse"
+cask "powershell"
 cask "sketch"
 cask "spotify"
+cask "steam"
 cask "transmission"
 cask "transmit"
 cask "visual-studio-code"
@@ -63,7 +66,6 @@ mas "Affinity Publisher", id: 881418622
 mas "Amphetamine", id: 937984704
 mas "Compressor", id: 424390742
 mas "Debit & Credit", id: 882637653
-mas "Deliveries", id: 924726344
 mas "Final Cut Pro", id: 424389933
 mas "GarageBand", id: 682658836
 mas "GoodNotes", id: 1444383602

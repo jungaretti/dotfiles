@@ -1,14 +1,22 @@
-# This is a somewhat-hacky script to configure PowerShell and Windows Terminal
-# See https://github.com/anishathalye/dotbot for the real script
+$ErrorActionPreference = "Stop"
 
-# Replace the Target portion with the profilePath (relative or absolute) that the new link refers to
-$directoryPath = "$($HOME)\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
-$profilePath = "$($HOME)\Documents\PowerShell\Microsoft.PowerShell_profile.ps1"
-$themePath = "$($HOME)\Documents\PowerShell\wezmps.omp.json"
-# Replace the Link portion with the profilePath to the symbolic link you want to create
-$profileTarget = "$($PSScriptRoot)\dots\powershell\profile.ps1"
-$themeTarget = "$($PSScriptRoot)\dots\powershell\wezmps.omp.json"
+$CONFIG = "install.conf.yaml"
+$DOTBOT_DIR = "dotbot"
 
-New-Item -ItemType Directory -Force -Path $directoryPath
-New-Item -ItemType SymbolicLink -Force -Path $profilePath -Target $profileTarget
-New-Item -ItemType SymbolicLink -Force -Path $themePath -Target $themeTarget
+$DOTBOT_BIN = "bin/dotbot"
+$BASEDIR = $PSScriptRoot
+
+Set-Location $BASEDIR
+git -C $DOTBOT_DIR submodule sync --quiet --recursive
+git submodule update --init --recursive $DOTBOT_DIR
+
+foreach ($PYTHON in ('python', 'python3', 'python2')) {
+    # Python redirects to Microsoft Store in Windows 10 when not installed
+    if (& { $ErrorActionPreference = "SilentlyContinue"
+            ![string]::IsNullOrEmpty((&$PYTHON -V))
+            $ErrorActionPreference = "Stop" }) {
+        &$PYTHON $(Join-Path $BASEDIR -ChildPath $DOTBOT_DIR | Join-Path -ChildPath $DOTBOT_BIN) -d $BASEDIR -c $CONFIG $Args
+        return
+    }
+}
+Write-Error "Error: Cannot find Python."

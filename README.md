@@ -6,15 +6,13 @@ Dotfiles, configs, and lists that make anywhere feel like `/home`.
 
 > "Ond’ io per lo tuo me’ penso e discerno che tu mi segui, e io sarò tua guida, e trarrotti di qui per loco etterno" ([Inferno I, 112-114](https://digitaldante.columbia.edu/dante/divine-comedy/inferno/inferno-1/)).
 
-Are you ready to set up a new macOS, Arch Linux, or Windows computer for me? Fire up your favorite terminal and let's get started.
+Are you ready to set up a new computer for me? Fire up your favorite terminal and let's get started!
 
 ### Moving In
 
-First things first, gain access to your data. This will be tough unless you're me. Sign into your password manager and generate a new SSH key using `ssh-keygen`. You'll probably want to share that fresh SSH key with GitHub before cloning any repos. **Do not grant access to corporate organizations on personal devices.**
+First things first, gain access to your data. This will be tough unless you're me. Sign into your password manager and generate a new SSH key using `ssh-keygen`. You'll probably want to share that fresh SSH key with GitHub before cloning any repos. (You can use the [GitHub CLI](https://cli.github.com/manual/) to do that without a browser.) **Do not grant access to corporate organizations on personal devices.**
 
-Pro tip: You can use the [GitHub CLI](https://cli.github.com/manual/) to do that without a browser.
-
-```bash
+```sh
 ssh-keygen -m PEM -t rsa -b 4096
 # Check out ~/.ssh/id_rsa.pub
 
@@ -25,28 +23,38 @@ gh ssh-key add ~/.ssh/id_rsa.pub -t "hostname.domain"
 
 Then, clone or move this repo to `~/Repos/.dotfiles`.
 
-```bash
+```sh
 mkdir -p ~/Repos
 gh repo clone jungaretti/dotfiles ~/Repos/.dotfiles
 ```
 
 ### Unpacking
 
-Install apps and tools using [Homebrew](https://github.com/Homebrew/brew) on macOS, [pacman](https://wiki.archlinux.org/index.php/Pacman) on Arch Linux, or the [Windows Package Manager](https://docs.microsoft.com/en-us/windows/package-manager/) on Windows.
+Now it's time to install apps and tools.
 
-###### macOS
-
-Check out `stuff/macos/README.md`.
+| Platform   | Tool                                                                |
+|------------|---------------------------------------------------------------------|
+| Arch Linux | [pacman](https://wiki.archlinux.org/index.php/Pacman)               |
+| macOS      | [brew](https://github.com/Homebrew/brew)                            |
+| Windows    | [winget](https://docs.microsoft.com/en-us/windows/package-manager/) |
 
 ###### Arch Linux
 
-Install essential packages with `pacman -Syu base-devel git zsh`. Then, check out `stuff/arch-linux/README.md`.
+Install essential packages with `pacman -Syu base-devel git zsh`. Then, check out `stuff/arch-linux`.
 
-###### Everywhere
+###### macOS
+
+Check out `stuff/macos`.
+
+###### Windows
+
+Check out `stuff/windows`.
+
+#### zsh
 
 [Install Oh My Zsh.](https://ohmyz.sh/) It's not my favorite, but it gets the job done.
 
-```bash
+```sh
 gh repo clone ohmyzsh/ohmyzsh
 cd ohmyzsh
 ./tools/install.sh
@@ -57,10 +65,7 @@ sudo chsh -s /bin/zsh jungaretti
 
 Now it's time to "install" your dotfiles. I use Dotbot to install my dotfiles; it's an elegant and simple solution that works well for me.
 
-```bash
-# Script won't overwrite existing files
-rm ~/.zshrc
-
+```sh
 cd ~/Repos/dotfiles
 ./install.bash
 
@@ -103,7 +108,7 @@ I use [restic](https://github.com/restic/restic) and [crestic](https://github.co
 
 **You need to export a few shell variables in order for restic/crestic to work correctly.** Add the following lines to `.zshenv` and paste their values from Backblaze or your password manager.
 
-```bash
+```sh
 # Backblaze application key
 export B2_ACCOUNT_ID=KEY_ID
 export B2_ACCOUNT_KEY=APPLICATION_KEY

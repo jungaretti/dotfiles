@@ -16,8 +16,8 @@
             "display_status": true,
             "display_status_detail": false,
             "status_separator_icon": "",
-            "local_working_icon": "⚡",
-            "local_staged_icon": "🌩️",
+            "local_working_icon": "☇",
+            "local_staged_icon": "☈",
             "stash_count_icon": "",
             "worktree_count_icon": ""
           }

@@ -1,34 +1,22 @@
 [theme]
-file = "badger.toml"
+file = "native"
 
 [icons]
-name = "none"
-
-[[block]]
-block = "focused_window"
-max_width = 50
-show_marks = "visible"
-[block.theme_overrides]
-idle_bg = "#4c566a" #nord3
+name = "awesome5"
 
 [[block]]
 block = "cpu"
 interval = 1
 format = "{utilization}"
-[block.theme_overrides]
-idle_bg = "#434c5e" #nord2
 
 [[block]]
 block = "memory"
 interval = 1
-display_type = "memory"
+clickable = false
 format_mem = "{mem_used_percents}"
-format_swap = "{swap_used_percents}"
-[block.theme_overrides]
-idle_bg = "#3b4252" #nord1
 
 [[block]]
 block = "time"
-format = "%Y-%m-%d %I:%M:%S %p"
 interval = 1
 locale = "en_US"
+format = "%Y-%m-%d %I:%M:%S %p"

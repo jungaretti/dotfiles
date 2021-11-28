@@ -1,11 +1,8 @@
-# Check out https://github.com/anishathalye/dotbot
-
 - clean:
     ~/:
+    ~/.gnupg:
     ~/.config:
       recursive: true
-    ~/.gnupg:
-
 - link:
     ~/.gitconfig:
       path: src/git/gitconfig
@@ -15,14 +12,13 @@
       path: src/zsh/zshrc
       force: true
     ~/.gnupg/gpg-agent.conf:
+      path: src/gnupg/gpg-agent.conf
       if: "gpg -k" # ensures gpg is initialized
       create: false
-      path: src/gnupg/gpg-agent.conf
 
 - defaults:
     link:
       create: true
-
 - link:
     ~/.config/topgrade.toml:
       path: src/topgrade/topgrade.toml
@@ -39,7 +35,6 @@
     link:
       if: "[ `uname -s` = Linux ]"
       create: true
-
 - link:
     ~/.xinitrc:
       path: src/xinit/xinitrc

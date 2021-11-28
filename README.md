@@ -1,73 +1,61 @@
 # Dotfiles
 
-Dotfiles, configs, and lists that make anywhere feel like `/home`.
+Dotfiles that make anywhere feel like `/home`.
 
-## Getting Started
+## Setting Up Shop
 
 > "Ond’ io per lo tuo me’ penso e discerno che tu mi segui, e io sarò tua guida, e trarrotti di qui per loco etterno" ([Inferno I, 112-114](https://digitaldante.columbia.edu/dante/divine-comedy/inferno/inferno-1/)).
 
 Are you ready to set up a new computer for me? Fire up your favorite terminal and let's get started!
 
-### First Things First
+### Generate a SSH Key
 
-Generate a new SSH key using `ssh-keygen`. You'll probably want to share this key with GitHub before cloning any repos. (You can use the [GitHub CLI](https://cli.github.com/manual/) to do that without a browser.) **Do not grant access to corporate organizations on personal devices.**
+Generate a new SSH key using `ssh-keygen`. Be sure to share that key with GitHub before cloning any repos. (You can use the [GitHub CLI](https://cli.github.com/manual/) to do that without a browser.)
 
 ```sh
-ssh-keygen -m PEM -t rsa -b 4096
-# Check out ~/.ssh/id_rsa.pub
+ssh-keygen -m PEM -t rsa -b 4096 -C "domain/hostname"
 
-# You can't name the SSH key if you add it here
+# Don't add your SSH key yet
 gh auth login -s write:public_key
 
-gh ssh-key add ~/.ssh/id_rsa.pub -t "hostname.domain"
+gh ssh-key add ~/.ssh/id_rsa.pub -t "domain/hostname"
 ```
 
-Next, clone this repo!
+### Install Oh My Zsh
 
-```sh
-mkdir -p ~/Repos
-gh repo clone jungaretti/dotfiles ~/Repos/dotfiles
-```
-
-### Installing Your Stuff
-
-| Platform   | Tool                                                                | Stuff              |
-| ---------- | ------------------------------------------------------------------- | ------------------ |
-| Arch Linux | [pacman](https://wiki.archlinux.org/index.php/Pacman)               | `stuff/arch-linux` |
-| macOS      | [brew](https://github.com/Homebrew/brew)                            | `stuff/macos`      |
-| Windows    | [winget](https://docs.microsoft.com/en-us/windows/package-manager/) | `stuff/windows`    |
-
-#### zsh
-
-[Install Oh My Zsh.](https://ohmyz.sh/) It's not my favorite, but it gets the job done.
+Install Zsh and [Oh My Zsh](https://ohmyz.sh/).
 
 ```sh
 gh repo clone ohmyzsh/ohmyzsh
-cd ohmyzsh
-./tools/install.sh
+./ohmyzsh/tools/install.sh
 
-# Use chsh if you're using The Cloud™ or don't have a user password
+# Using sudo without a password?
 sudo chsh -s /bin/zsh jungaretti
 ```
 
-#### dotfiles
+### Install (These) Dotfiles
 
-Configure dotfiles from this repo using `./install` or `.\install.ps1`. I use Dotbot to manage my dotfiles; it's an elegant and simple solution that works well for me.
+Clone this repo and install my dotfiles using `./install`. I use [Dotbot](https://github.com/anishathalye/dotbot) to manage my dotfiles; it's an elegant and simple solution that works well for me.
 
-### Wrapping Up
+```sh
+gh repo clone jungaretti/dotfiles
+./dotfiles/install
+```
 
-Be sure to install tools that use custom installers.
+### Install Apps and Tools
 
-| Tool   | Instructions                  |
-| ------ | ----------------------------- |
-| rustup | https://rustup.rs/            |
-| fnm    | https://github.com/Schniz/fnm |
+Be sure to install tools that use custom installers:
 
-#### Backing Up to B2
+- [rustup](https://rustup.rs/)
+- [fnm](https://github.com/Schniz/fnm)
 
-I use [restic](https://github.com/restic/restic) and [crestic](https://github.com/nils-werner/crestic) to back up my stuff to [Backblaze B2](https://www.backblaze.com/b2/cloud-storage.html).
+Next, check out my platform-specific repos to install all of my apps and tools.
 
-**You need to export a few shell variables in order for this stack to work correctly.** Add the following lines to `.zshenv` and paste their values from Backblaze or your password manager.
+## Configure B2 Backups
+
+I use [restic](https://github.com/restic/restic) and [crestic](https://github.com/nils-werner/crestic) to back up my data to [Backblaze B2](https://www.backblaze.com/b2/cloud-storage.html).
+
+Log into Backblaze to create a new storage bucket and generate a new application key. Then, add the following lines to `~/.zshenv` and paste their values from Backblaze.
 
 ```sh
 # Backblaze application key

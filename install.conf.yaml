@@ -1,54 +1,50 @@
-# Check out https://github.com/anishathalye/dotbot
-
 - clean:
     ~/:
+    ~/.gnupg:
     ~/.config:
       recursive: true
-
 - link:
     ~/.gitconfig:
-      path: dots/git/gitconfig
+      path: src/git/gitconfig
     ~/.vimrc:
-      path: dots/vim/vimrc
+      path: src/vim/vimrc
     ~/.zshrc:
-      path: dots/zsh/zshrc
+      path: src/zsh/zshrc
       force: true
     ~/.gnupg/gpg-agent.conf:
+      path: src/gnupg/gpg-agent.conf
       if: "gpg -k" # ensures gpg is initialized
       create: false
-      path: dots/gnupg/gpg-agent.conf
 
 - defaults:
     link:
       create: true
-
 - link:
     ~/.config/topgrade.toml:
-      path: dots/topgrade/topgrade.toml
+      path: src/topgrade/topgrade.toml
     ~/.config/crestic/crestic.cfg:
-      path: dots/crestic/crestic.cfg
+      path: src/crestic/crestic.cfg
     ~/.config/restic/exclude.txt:
-      path: dots/restic/exclude.txt
+      path: src/restic/exclude.txt
     ~/.config/gh/config.yml:
-      path: dots/gh/config.yml
+      path: src/gh/config.yml
     ~/.config/alacritty/alacritty.yml:
-      path: dots/alacritty/alacritty.yml
+      path: src/alacritty/alacritty.yml
 
 - defaults:
     link:
       if: "[ `uname -s` = Linux ]"
       create: true
-
 - link:
     ~/.xinitrc:
-      path: dots/xinit/xinitrc
+      path: src/xinit/xinitrc
     ~/.config/fontconfig/fonts.conf:
-      path: dots/fontconfig/fonts.conf
+      path: src/fontconfig/fonts.conf
     ~/.config/i3:
-      path: dots/i3
+      path: src/i3
     ~/.config/i3status-rust:
-      path: dots/i3status-rust
+      path: src/i3status-rust
     ~/.config/dunst/dunstrc:
-      path: dots/dunst/dunstrc
+      path: src/dunst/dunstrc
     ~/.config/rofi:
-      path: dots/rofi
+      path: src/rofi

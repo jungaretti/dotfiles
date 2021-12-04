@@ -1,3 +1,5 @@
-configuration {
-  theme: "badger";
+configuration
+{
 }
+
+@theme "badger"

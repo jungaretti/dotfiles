@@ -104,3 +104,8 @@ export EDITOR
 
 GPG_TTY=$(tty)
 export GPG_TTY
+
+if [[ "$(command -v fnm)" ]]
+then
+    eval "$(fnm env)"
+fi

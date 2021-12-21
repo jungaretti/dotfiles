@@ -31,6 +31,16 @@
     ~/.config/alacritty/alacritty.yml:
       path: src/alacritty/alacritty.yml
 
+# macOS
+- defaults:
+    link:
+      if: "[ `uname -s` = Darwin ]"
+      create: true
+- link:
+    ~/Library/Application Support/iTerm2/DynamicProfiles/Dante.json:
+      path: src/iterm/Dante.json
+
+# Linux
 - defaults:
     link:
       if: "[ `uname -s` = Linux ]"

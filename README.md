@@ -66,6 +66,10 @@ export B2_ACCOUNT_KEY=APPLICATION_KEY
 export RESTIC_PASSWORD=PASSWORD
 ```
 
+## Terminal Theme
+
+I use MaterialDark from https://github.com/mbadolato/iTerm2-Color-Schemes.
+
 ## Built With
 
 - [Dotbot](https://github.com/anishathalye/dotbot)

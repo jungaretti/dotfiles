@@ -11,31 +11,32 @@ font:
   bold_italic:
     family: Source Code Variable
     style: Bold Italic
-# Colors (Nord)
+# Colors (MaterialDarker)
 colors:
-  # Default colors
-  primary:
-    background: "#2E3440"
-    foreground: "#D8DEE9"
-
-  # Normal colors
-  normal:
-    black: "#3B4252"
-    red: "#BF616A"
-    green: "#A3BE8C"
-    yellow: "#EBCB8B"
-    blue: "#81A1C1"
-    magenta: "#B48EAD"
-    cyan: "#88C0D0"
-    white: "#E5E9F0"
-
-  # Bright colors
   bright:
-    black: "#4C566A"
-    red: "#BF616A"
-    green: "#A3BE8C"
-    yellow: "#EBCB8B"
-    blue: "#81A1C1"
-    magenta: "#B48EAD"
-    cyan: "#8FBCBB"
-    white: "#ECEFF4"
+    black: '#545454'
+    blue: '#82aaff'
+    cyan: '#89ddff'
+    green: '#c3e88d'
+    magenta: '#c792ea'
+    red: '#ff5370'
+    white: '#ffffff'
+    yellow: '#ffcb6b'
+  cursor:
+    cursor: '#ffffff'
+    text: '#ffffff'
+  normal:
+    black: '#000000'
+    blue: '#82aaff'
+    cyan: '#89ddff'
+    green: '#c3e88d'
+    magenta: '#c792ea'
+    red: '#ff5370'
+    white: '#ffffff'
+    yellow: '#ffcb6b'
+  primary:
+    background: '#212121'
+    foreground: '#eeffff'
+  selection:
+    background: '#eeffff'
+    text: '#545454'

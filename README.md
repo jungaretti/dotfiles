@@ -13,12 +13,12 @@ Are you ready to set up a new computer for me? Fire up your favorite terminal an
 Generate a new SSH key using `ssh-keygen`. Be sure to share that key with GitHub before cloning any repos. (You can use the [GitHub CLI](https://cli.github.com/manual/) to do that without a browser.)
 
 ```sh
-ssh-keygen -m PEM -t rsa -b 4096 -C "domain/hostname"
+ssh-keygen -m PEM -t rsa -b 4096 -C "username@hostname.[home|work]"
 
 # Don't add your SSH key yet
 gh auth login -s write:public_key
 
-gh ssh-key add ~/.ssh/id_rsa.pub -t "domain/hostname"
+gh ssh-key add ~/.ssh/id_rsa.pub -t "hostname.[home|work]"
 ```
 
 ### Install Oh My Zsh
@@ -65,6 +65,10 @@ export B2_ACCOUNT_KEY=APPLICATION_KEY
 # restic repository password
 export RESTIC_PASSWORD=PASSWORD
 ```
+
+## Terminal Theme
+
+I use MaterialDark from https://github.com/mbadolato/iTerm2-Color-Schemes.
 
 ## Built With
 

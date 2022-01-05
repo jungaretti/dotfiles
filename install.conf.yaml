@@ -1,8 +1,13 @@
 - clean:
     ~/:
-    ~/.gnupg:
     ~/.config:
       recursive: true
+    ~/.gnupg:
+
+# Essentials
+- defaults:
+    link:
+      create: true
 - link:
     ~/.gitconfig:
       path: src/git/gitconfig
@@ -11,26 +16,31 @@
     ~/.zshrc:
       path: src/zsh/zshrc
       force: true
+    ~/.config/alacritty/alacritty.yml:
+      path: src/alacritty/alacritty.yml
+    ~/.config/crestic/crestic.cfg:
+      path: src/crestic/crestic.cfg
+    ~/.config/gh/config.yml:
+      path: src/gh/config.yml
+    ~/.config/restic/exclude.txt:
+      path: src/restic/exclude.txt
+    ~/.config/topgrade.toml:
+      path: src/topgrade/topgrade.toml
     ~/.gnupg/gpg-agent.conf:
       path: src/gnupg/gpg-agent.conf
       if: "gpg -k" # ensures gpg is initialized
       create: false
 
+# macOS
 - defaults:
     link:
+      if: "[ `uname -s` = Darwin ]"
       create: true
 - link:
-    ~/.config/topgrade.toml:
-      path: src/topgrade/topgrade.toml
-    ~/.config/crestic/crestic.cfg:
-      path: src/crestic/crestic.cfg
-    ~/.config/restic/exclude.txt:
-      path: src/restic/exclude.txt
-    ~/.config/gh/config.yml:
-      path: src/gh/config.yml
-    ~/.config/alacritty/alacritty.yml:
-      path: src/alacritty/alacritty.yml
+    ~/Library/Application Support/iTerm2/DynamicProfiles/Profiles.json:
+      path: src/iterm/Profiles.json
 
+# Linux
 - defaults:
     link:
       if: "[ `uname -s` = Linux ]"

@@ -2,7 +2,7 @@
 #assume_yes = true
 
 # Disable specific steps - same options as the command line flag
-disable = ["deno"]
+disable = ["deno","node","pnpm"]
 
 # Ignore failures for these steps
 #ignore_failures = ["powershell"]

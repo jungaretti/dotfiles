@@ -10,6 +10,7 @@
       create: true
 - link:
     ~/.gitconfig:
+      if: '[ ! "$(grep devdiv ~/.gitconfig)" ]'
       path: src/git/gitconfig
     ~/.vimrc:
       path: src/vim/vimrc

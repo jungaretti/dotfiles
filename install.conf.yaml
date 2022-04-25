@@ -10,7 +10,7 @@
       create: true
 - link:
     ~/.gitconfig:
-      if: '[ ! "$(grep devdiv ~/.gitconfig)" ]'
+      if: '[ ! $(grep devdiv ~/.gitconfig) ]'
       path: src/git/gitconfig
     ~/.vimrc:
       path: src/vim/vimrc
@@ -29,13 +29,13 @@
       path: src/topgrade/topgrade.toml
     ~/.gnupg/gpg-agent.conf:
       path: src/gnupg/gpg-agent.conf
-      if: "gpg -k" # ensures gpg is initialized
+      if: 'gpg -k' # ensures gpg is initialized
       create: false
 
 # macOS
 - defaults:
     link:
-      if: "[ `uname -s` = Darwin ]"
+      if: '[ "$(uname -s)" = Darwin ]'
       create: true
 - link:
     ~/Library/Application Support/iTerm2/DynamicProfiles/Profiles.json:
@@ -44,7 +44,7 @@
 # Linux
 - defaults:
     link:
-      if: "[ `uname -s` = Linux ]"
+      if: '[ "$(uname -s)" = Linux ]'
       create: true
 - link:
     ~/.xinitrc:

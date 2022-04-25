@@ -10,7 +10,7 @@
       create: true
 - link:
     ~/.gitconfig:
-      if: '[ ! $(grep devdiv ~/.gitconfig) ]'
+      if: "[ ! $(grep devdiv ~/.gitconfig) ]"
       path: src/git/gitconfig
     ~/.vimrc:
       path: src/vim/vimrc
@@ -29,7 +29,7 @@
       path: src/topgrade/topgrade.toml
     ~/.gnupg/gpg-agent.conf:
       path: src/gnupg/gpg-agent.conf
-      if: 'gpg -k' # ensures gpg is initialized
+      if: "gpg -k" # ensures gpg is initialized
       create: false
 
 # macOS
@@ -41,21 +41,21 @@
     ~/Library/Application Support/iTerm2/DynamicProfiles/Profiles.json:
       path: src/iterm/Profiles.json
 
-# Linux
+# My window manager setup for Arch Linux
 - defaults:
     link:
-      if: '[ "$(uname -s)" = Linux ]'
+      if: "[ $USE_CUSTOM_WM_ENV ]"
       create: true
 - link:
     ~/.xinitrc:
       path: src/xinit/xinitrc
-    ~/.config/fontconfig/fonts.conf:
-      path: src/fontconfig/fonts.conf
     ~/.config/i3:
       path: src/i3
     ~/.config/i3status-rust:
       path: src/i3status-rust
     ~/.config/dunst/dunstrc:
       path: src/dunst/dunstrc
+    ~/.config/fontconfig/fonts.conf:
+      path: src/fontconfig/fonts.conf
     ~/.config/rofi:
       path: src/rofi

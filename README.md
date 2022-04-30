@@ -35,7 +35,7 @@ sudo chsh -s /bin/zsh jungaretti
 
 ### Install (These) Dotfiles
 
-Clone this repo and install my dotfiles using `./install`. I use [Dotbot](https://github.com/anishathalye/dotbot) to manage my dotfiles; it's an elegant and simple solution that works well for me.
+Clone this repo and install my dotfiles using `./install`. I use [Dotbot](https://github.com/anishathalye/dotbot) to manage my dotfiles. It's an elegant and simple solution that works well for me.
 
 ```sh
 gh repo clone jungaretti/dotfiles
@@ -44,14 +44,18 @@ gh repo clone jungaretti/dotfiles
 
 ### Install Apps and Tools
 
-Be sure to install tools that use custom installers:
+Install tools with custom installers:
 
 - [rustup](https://rustup.rs/)
 - [fnm](https://github.com/Schniz/fnm)
 
-Next, check out my platform-specific repos to install all of my apps and tools.
+Next, check out my platform-specific repos to install all of my apps and tools:
 
-## Configure B2 Backups
+- [jungaretti/stuff-macos](https://github.com/jungaretti/stuff-macos)
+- [jungaretti/stuff-windows](https://github.com/jungaretti/stuff-windows)
+- [jungaretti/stuff-archlinux](https://github.com/jungaretti/stuff-archlinux)
+
+### Configure B2 Backups
 
 I use [restic](https://github.com/restic/restic) and [crestic](https://github.com/nils-werner/crestic) to back up my data to [Backblaze B2](https://www.backblaze.com/b2/cloud-storage.html).
 
@@ -66,9 +70,9 @@ export B2_ACCOUNT_KEY=APPLICATION_KEY
 export RESTIC_PASSWORD=PASSWORD
 ```
 
-## Terminal Theme
+## Notes
 
-I use MaterialDark from https://github.com/mbadolato/iTerm2-Color-Schemes.
+- I use MaterialDark from https://github.com/mbadolato/iTerm2-Color-Schemes.
 
 ## Built With
 

@@ -4,7 +4,6 @@
       recursive: true
     ~/.gnupg:
 
-# Essentials
 - defaults:
     link:
       create: true
@@ -32,7 +31,6 @@
       if: "gpg -k" # ensures gpg is initialized
       create: false
 
-# macOS
 - defaults:
     link:
       if: '[ "$(uname -s)" = Darwin ]'
@@ -41,7 +39,7 @@
     ~/Library/Application Support/iTerm2/DynamicProfiles/Profiles.json:
       path: src/iterm/Profiles.json
 
-# My window manager setup for Arch Linux
+# Custom window manager setup with i3
 - defaults:
     link:
       if: "[ $USE_CUSTOM_WM_ENV ]"
@@ -49,13 +47,13 @@
 - link:
     ~/.xinitrc:
       path: src/xinit/xinitrc
-    ~/.config/i3:
-      path: src/i3
-    ~/.config/i3status-rust:
-      path: src/i3status-rust
     ~/.config/dunst/dunstrc:
       path: src/dunst/dunstrc
     ~/.config/fontconfig/fonts.conf:
       path: src/fontconfig/fonts.conf
+    ~/.config/i3:
+      path: src/i3
+    ~/.config/i3status-rust:
+      path: src/i3status-rust
     ~/.config/rofi:
       path: src/rofi

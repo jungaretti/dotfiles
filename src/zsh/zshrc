@@ -99,8 +99,8 @@ source $ZSH/oh-my-zsh.sh
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 alias lsl="ls -l"
 
-EDITOR=vim
-export EDITOR
+export EDITOR=vim
+export GPG_TTY=$(tty)
 
 GPG_TTY=$(tty)
 export GPG_TTY

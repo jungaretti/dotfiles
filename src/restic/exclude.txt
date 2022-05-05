@@ -8,6 +8,7 @@ OneDrive
 .cargo
 .rustup
 .vscode
+.vscode-server
 
 .fnm
 .npm

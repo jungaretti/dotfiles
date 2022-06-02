@@ -55,11 +55,7 @@ Install tools with custom installers:
 - [rustup](https://rustup.rs/)
 - [fnm](https://github.com/Schniz/fnm)
 
-Next, check out my platform-specific repos to install all of my apps and tools:
-
-- [jungaretti/stuff-macos](https://github.com/jungaretti/stuff-macos)
-- [jungaretti/stuff-windows](https://github.com/jungaretti/stuff-windows)
-- [jungaretti/stuff-archlinux](https://github.com/jungaretti/stuff-archlinux)
+Check out [jungaretti/stuff](https://github.com/jungaretti/stuff) to install all of my apps and tools.
 
 ### Configure B2 Backups
 

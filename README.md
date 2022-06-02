@@ -8,17 +8,23 @@ Dotfiles that make anywhere feel like `/home`.
 
 Are you ready to set up a new computer for me? Fire up your favorite terminal and let's get started!
 
-### Generate a SSH Key
+### Generate SSH Key
 
-Generate a new SSH key using `ssh-keygen`. Be sure to share that key with GitHub before cloning any repos. (You can use the [GitHub CLI](https://cli.github.com/manual/) to do that without a browser.)
+Generate a new SSH key using `ssh-keygen` and share it with GitHub. You can use the [GitHub CLI](https://cli.github.com/manual/) to do that without a browser.
 
 ```sh
-ssh-keygen -m PEM -t rsa -b 4096 -C "username@hostname.[home|work]"
+# Name the new SSH key
+KEY_LOGIN='<login>'
+KEY_HOST='<hostname>.<home|work>'
 
-# Don't add your SSH key yet
-gh auth login -s write:public_key
+# Generate a new Ed25519 key
+ssh-keygen -o -a 256 -t ed25519 -C "$KEY_LOGIN@$KEY_HOST"
 
-gh ssh-key add ~/.ssh/id_rsa.pub -t "hostname.[home|work]"
+# Don't add your SSH key yet!
+gh auth login -s write:public_key -s codespace
+
+# Add your SSH key with a title
+gh ssh-key add ~/.ssh/id_ed25519.pub --title "$KEY_HOST"
 ```
 
 ### Install Oh My Zsh

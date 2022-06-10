@@ -3,8 +3,8 @@
 link() {
 	SRC=""
 	DEST=""
-	CREATE=""
-	# RELINK=""
+	CREATE="false"
+	RELINK="false"
 	# FORCE=""
 	# IF=""
 	# RELATIVE=""
@@ -28,7 +28,11 @@ link() {
 			shift
 			;;
 		-c | --create)
-			CREATE='true'
+			CREATE="true"
+			shift
+			;;
+		-r | --relink)
+			RELINK="true"
 			shift
 			;;
 		-* | --*)
@@ -54,6 +58,10 @@ link() {
 		return
 	fi
 
+	if [ "$RELINK" = "true" ] && [ -L "$DEST" ]; then
+		echo "Removing existing link: $DEST"
+		rm $DEST
+	fi
 	if [ -e "$DEST" ]; then
 		echo "Destination already exists: $DEST"
 		return 1

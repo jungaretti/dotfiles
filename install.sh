@@ -4,7 +4,7 @@ set -e
 
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-source "$BASEDIR/scripts/dots.sh"
 cd "${BASEDIR}"
+source "./scripts/dots.sh"
 
-link /workspaces/dotfiles/LICENSE ~/dotfiles_license
+link -s ./src/zsh/zshrc -d ~/.zshrc

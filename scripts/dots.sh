@@ -3,7 +3,7 @@
 link() {
 	SRC=""
 	DEST=""
-	# CREATE=""
+	CREATE=""
 	# RELINK=""
 	# FORCE=""
 	# IF=""
@@ -27,9 +27,13 @@ link() {
 			shift
 			shift
 			;;
+		-c | --create)
+			CREATE='true'
+			shift
+			;;
 		-* | --*)
 			echo "Unknown option: $1"
-			exit 1
+			return 1
 			;;
 		*)
 			ARGS+=("$1")
@@ -42,19 +46,25 @@ link() {
 
 	if [ ! -e "$SRC" ]; then
 		echo "Source does not exist: $SRC"
-		exit 1
+		return 1
 	fi
 
 	if [ "$(readlink -f $DEST)" = "$SRC" ]; then
 		echo "Link already exists: $DEST -> $SRC"
-		exit
+		return
 	fi
 
 	if [ -e "$DEST" ]; then
 		echo "Destination already exists: $DEST"
-		exit 1
+		return 1
 	fi
 
-	echo "Creating link $SRC -> $DEST..."
+	DEST_DIR="$(dirname $DEST)"
+	if [ "$CREATE" = "true" ] && [ ! -d "$DEST_DIR" ]; then
+		echo "Creating parent directory: $DEST_DIR"
+		mkdir -p "$DEST_DIR"
+	fi
+
+	echo "Creating link $SRC -> $DEST"
 	ln -s "$SRC" "$DEST"
 }

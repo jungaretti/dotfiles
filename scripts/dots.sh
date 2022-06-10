@@ -40,16 +40,21 @@ link() {
 
 	SRC="$(readlink -f $SRC)"
 
-	if [ -e "$DEST" ]; then
-		echo "Destination already exists: $DEST"
-		exit 1
-	fi
-
 	if [ ! -e "$SRC" ]; then
 		echo "Source does not exist: $SRC"
 		exit 1
 	fi
 
-	echo "Creating link from $SRC to $DEST..."
+	if [ "$(readlink -f $DEST)" = "$SRC" ]; then
+		echo "Link already exists: $DEST -> $SRC"
+		exit
+	fi
+
+	if [ -e "$DEST" ]; then
+		echo "Destination already exists: $DEST"
+		exit 1
+	fi
+
+	echo "Creating link $SRC -> $DEST..."
 	ln -s "$SRC" "$DEST"
 }

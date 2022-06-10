@@ -5,7 +5,7 @@ link() {
 	DEST=""
 	CREATE="false"
 	RELINK="false"
-	# FORCE=""
+	FORCE="false"
 	# IF=""
 	# RELATIVE=""
 	# CONONICALIZE=""
@@ -35,6 +35,10 @@ link() {
 			RELINK="true"
 			shift
 			;;
+		-f | --force)
+			FORCE="true"
+			shift
+			;;
 		-* | --*)
 			echo "Unknown option: $1"
 			return 1
@@ -58,7 +62,7 @@ link() {
 		return
 	fi
 
-	if [ "$RELINK" = "true" ] && [ -L "$DEST" ]; then
+	if [ "$RELINK" = "true" ] && [ -L "$DEST" ] || [ "$FORCE" = "true" ]; then
 		echo "Removing existing link: $DEST"
 		rm $DEST
 	fi

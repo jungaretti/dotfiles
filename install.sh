@@ -9,4 +9,4 @@ source "./scripts/dots.sh"
 
 link -s src/zsh/zshrc -d ~/.zshrc
 link -s src/alacritty/alacritty.yml -d ~/.config/alacritty/alacritty.yml -c
-link -s src/vim/vimrc -d ~/.vimrc -r
+link -s src/vim/vimrc -d ~/.vimrc -f

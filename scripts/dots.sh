@@ -16,7 +16,7 @@ link() {
 	ARGS=()
 	while [[ $# -gt 0 ]]; do
 		case $1 in
-		-p | --path)
+		-s | --src)
 			SRC="$2"
 			shift
 			shift

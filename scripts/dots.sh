@@ -5,7 +5,7 @@ link() {
 	CREATE="false"
 	RELINK="false"
 	FORCE="false"
-	# IF=""
+	IF=""
 	# RELATIVE=""
 	# CONONICALIZE=""
 	# IGNORE_MISSING=""
@@ -33,6 +33,11 @@ link() {
 			FORCE="true"
 			shift
 			;;
+		--if)
+			IF="$2"
+			shift
+			shift
+			;;
 		-* | --*)
 			echo "Unknown option: $1"
 			return 1
@@ -51,6 +56,12 @@ link() {
 	if [ ! -e "$SRC" ]; then
 		echo "Source does not exist: $SRC"
 		return 1
+	fi
+
+	# Evaluate condition and skip if false
+	if [ -n "$IF" ] && ! bash -c "$IF" &>/dev/null; then
+		echo "Skipping: $SRC"
+		return
 	fi
 
 	# Skip if valid link already exists

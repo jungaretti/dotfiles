@@ -2,7 +2,6 @@
 
 link() {
 	SRC=""
-	DEST=""
 	CREATE="false"
 	RELINK="false"
 	FORCE="false"
@@ -17,13 +16,8 @@ link() {
 	ARGS=()
 	while [[ $# -gt 0 ]]; do
 		case $1 in
-		-s | --src)
+		-p | --path)
 			SRC="$2"
-			shift
-			shift
-			;;
-		-d | --destination)
-			DEST="$2"
 			shift
 			shift
 			;;
@@ -51,26 +45,37 @@ link() {
 	done
 
 	SRC="$(readlink -f $SRC)"
+	DEST="${ARGS[0]}"
 
+	# Make sure source exists
 	if [ ! -e "$SRC" ]; then
 		echo "Source does not exist: $SRC"
 		return 1
 	fi
 
+	# Skip if valid link already exists
 	if [ "$(readlink -f $DEST)" = "$SRC" ]; then
 		echo "Link already exists: $DEST -> $SRC"
 		return
 	fi
 
-	if [ "$RELINK" = "true" ] && [ -L "$DEST" ] || [ "$FORCE" = "true" ]; then
+	# Remove existing destination (if needed)
+	if [ "$RELINK" = "true" ] || [ "$FORCE" = "true" ] && [ -L "$DEST" ]; then
 		echo "Removing existing link: $DEST"
 		rm $DEST
 	fi
+	if [ "$FORCE" = "true" ] && [ -e "$DEST" ]; then
+		echo "Removing existing file: $DEST"
+		rm $DEST
+	fi
+
+	# Make sure destination doesn't exist
 	if [ -e "$DEST" ]; then
 		echo "Destination already exists: $DEST"
 		return 1
 	fi
 
+	# Create parent directory (if needed)
 	DEST_DIR="$(dirname $DEST)"
 	if [ "$CREATE" = "true" ] && [ ! -d "$DEST_DIR" ]; then
 		echo "Creating parent directory: $DEST_DIR"

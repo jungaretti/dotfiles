@@ -28,36 +28,36 @@ link() {
 	ARGS=()
 	while [[ $# -gt 0 ]]; do
 		case $1 in
-		-s | --src)
-			SRC="$2"
-			shift
-			shift
-			;;
-		-c | --create)
-			CREATE="true"
-			shift
-			;;
-		-r | --relink)
-			RELINK="true"
-			shift
-			;;
-		-f | --force)
-			FORCE="true"
-			shift
-			;;
-		--if)
-			IF="$2"
-			shift
-			shift
-			;;
-		-* | --*)
-			echo "Unknown option: $1"
-			return 1
-			;;
-		*)
-			ARGS+=("$1")
-			shift
-			;;
+			-s | --src)
+				SRC="$2"
+				shift
+				shift
+				;;
+			-c | --create)
+				CREATE="true"
+				shift
+				;;
+			-r | --relink)
+				RELINK="true"
+				shift
+				;;
+			-f | --force)
+				FORCE="true"
+				shift
+				;;
+			--if)
+				IF="$2"
+				shift
+				shift
+				;;
+			-* | --*)
+				echo "Unknown option: $1"
+				return 1
+				;;
+			*)
+				ARGS+=("$1")
+				shift
+				;;
 		esac
 	done
 

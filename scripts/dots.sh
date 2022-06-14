@@ -7,11 +7,6 @@ link() {
 	FORCE="false"
 	IF=""
 	# RELATIVE=""
-	# CONONICALIZE=""
-	# IGNORE_MISSING=""
-	# GLOB=""
-	# EXCLUDE=""
-	# PREFIX=""
 
 	ARGS=()
 	while [[ $# -gt 0 ]]; do

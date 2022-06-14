@@ -41,7 +41,7 @@ sudo chsh -s /bin/zsh jungaretti
 
 ### Install (These) Dotfiles
 
-Clone this repo and install my dotfiles using `./install`. I use [Dotbot](https://github.com/anishathalye/dotbot) to manage my dotfiles. It's an elegant and simple solution that works well for me.
+Clone this repo and install my dotfiles using `./install.sh`.
 
 ```sh
 gh repo clone jungaretti/dotfiles
@@ -75,7 +75,3 @@ export RESTIC_PASSWORD=PASSWORD
 ## Notes
 
 - I use MaterialDark from https://github.com/mbadolato/iTerm2-Color-Schemes.
-
-## Built With
-
-- [Dotbot](https://github.com/anishathalye/dotbot)

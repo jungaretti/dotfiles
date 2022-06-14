@@ -88,6 +88,6 @@ link() {
 		mkdir -p "$DEST_DIR"
 	fi
 
-	echo "Creating link $SRC -> $DEST"
+	echo "Creating link: $SRC -> $DEST"
 	ln -s "$SRC" "$DEST"
 }

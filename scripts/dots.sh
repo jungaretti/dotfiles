@@ -44,7 +44,7 @@ link() {
 		esac
 	done
 
-	SRC="$(readlink -f $SRC)"
+	SRC="$(readlink -f "$SRC")"
 	DEST="${ARGS[0]}"
 
 	# Make sure source exists
@@ -60,7 +60,7 @@ link() {
 	fi
 
 	# Skip if valid link already exists
-	if [ "$(readlink -f $DEST)" = "$SRC" ]; then
+	if [ "$(readlink -f "$DEST")" = "$SRC" ]; then
 		echo "Link already exists: $DEST -> $SRC"
 		return
 	fi
@@ -82,7 +82,7 @@ link() {
 	fi
 
 	# Create parent directory (if needed)
-	DEST_DIR="$(dirname $DEST)"
+	DEST_DIR="$(dirname "$DEST")"
 	if [ "$CREATE" = "true" ] && [ ! -d "$DEST_DIR" ]; then
 		echo "Creating parent directory: $DEST_DIR"
 		mkdir -p "$DEST_DIR"

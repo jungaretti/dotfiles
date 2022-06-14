@@ -4,14 +4,6 @@
       recursive: true
     ~/.gnupg:
 
-- defaults:
-    link:
-      if: '[ "$(uname -s)" = Darwin ]'
-      create: true
-- link:
-    ~/Library/Application Support/iTerm2/DynamicProfiles/Profiles.json:
-      path: src/iterm/Profiles.json
-
 # Custom window manager setup with i3
 - defaults:
     link:

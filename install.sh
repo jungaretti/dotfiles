@@ -34,3 +34,8 @@ link ~/.config/topgrade.toml \
 link ~/.gnupg/gpg-agent.conf \
     --if 'gpg -k' \
     --src src/gnupg/gpg-agent.conf
+
+link ~/Library/Application\ Support/iTerm2/DynamicProfiles/Profiles.json \
+    --if '[ "$(uname -s)" = Darwin ]' \
+    --src src/iterm/Profiles.json \
+    --create

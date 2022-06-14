@@ -1,5 +1,22 @@
 #!/bin/bash
 
+collect_failure() {
+	"$@" || FAILURE="true"
+}
+
+reset_failure() {
+	export FAILURE="false"
+}
+
+report_failure() {
+	if [ "$FAILURE" = "false" ]; then
+		echo "All tasks completed successfully!"
+	else
+		echo "Some tasks didn't complete successfully"
+		return 1
+	fi
+}
+
 link() {
 	SRC=""
 	CREATE="false"

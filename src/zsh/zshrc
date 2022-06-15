@@ -102,6 +102,90 @@ alias lsl="ls -l"
 export EDITOR=vim
 export GPG_TTY=$(tty)
 
+config_ext_profiles() {
+    ALIAS="$1"
+    PROFILE_DIR="$2"
+
+    if [ -e "$PROFILE_DIR" ]; then
+        echo "Using existing profiles: $PROFILE_DIR"
+        return
+    fi
+
+    echo "Creating new profiles: $PROFILE_DIR"
+    mkdir -p "$PROFILE_DIR"
+
+    PROFILE_LOCAL="$PROFILE_DIR/codespaces-settings-local.json"
+    echo "Creating local profile: $PROFILE_LOCAL"
+    echo "{
+  \"isInternal\": true,
+  \"logTelemetry\": true,
+  \"vscsTargetUrl\": \"https://codespaces.servicebus.windows.net/$ALIAS\",
+  \"vscsRegion\": \"WestUs2\",
+  \"vscsTarget\": \"local\",
+}" >> $PROFILE_LOCAL
+
+    PROFILE_DEV="$PROFILE_DIR/codespaces-settings-dev.json"
+    echo "Creating dev profile: $PROFILE_DEV"
+    echo "{
+  \"isInternal\": true,
+  \"logTelemetry\": true,
+  \"vscsTargetUrl\": \"<DEV ENDPOINT>\",
+  \"vscsRegion\": \"WestUs2\",
+  \"vscsTarget\": \"dev\",
+}" >> $PROFILE_DEV
+
+    PROFILE_PPE="$PROFILE_DIR/codespaces-settings-ppe.json"
+    echo "Creating PPE profile: $PROFILE_PPE"
+    echo "{
+  \"isInternal\": true,
+  \"logTelemetry\": true,
+  \"vscsTargetUrl\": \"<PPE ENDPOINT>\",
+  \"vscsRegion\": \"<PPE REGION>\",
+  \"vscsTarget\": \"ppe\",
+}" >> $PROFILE_PPE
+
+    PROFILE_PROD="$PROFILE_DIR/codespaces-settings-prod.json"
+    echo "Creating prod profile: $PROFILE_PROD"
+    echo "{
+  \"isInternal\": true,
+  \"logTelemetry\": true,
+  \"vscsTargetUrl\": \"<PROD ENDPOINT>\",
+  \"vscsRegion\": \"<PROD REGION>\",
+  \"vscsTarget\": \"prod\",
+}" >> $PROFILE_PROD
+}
+
+export config_ext() {
+    TARGET="${1:=prod}"
+    ALIAS="${2:=jpungaretti}"
+    PROFILE_DIR="${3:=$HOME/codespaces-profiles}"
+
+    config_ext_profiles "$ALIAS" "$PROFILE_DIR"
+
+    case $TARGET in
+        "local")
+            echo "local"
+            # Link ~/codespaces-settings to local profile
+            ;;
+        "dev")
+            echo "dev"
+            # Link ~/codespaces-settings to dev profile
+            ;;
+        "ppe")
+            echo "ppe"
+            # Link ~/codespaces-settings to ppe profile
+            ;;
+        "prod")
+            echo "prod"
+            # Link ~/codespaces-settings to prod profile
+            ;;
+        *)
+            echo "Unknown target: $TARGET"
+            return 1
+            ;;
+    esac
+}
+
 if [[ "$(command -v fnm)" ]]
 then
     eval "$(fnm env)"

@@ -61,7 +61,7 @@ link() {
 		esac
 	done
 	
-	DEST_REL="${ARGS[0]}"
+	DEST="${ARGS[0]}"
 	SRC="$(readlink -f "$SRC_REL")"
 
 	# Make sure source exists
@@ -77,8 +77,7 @@ link() {
 	fi
 
 	# Skip if valid link already exists
-	DEST="$(readlink -f "$DEST_REL")"
-	if [ "$DEST" = "$SRC" ]; then
+	if [ "$(readlink -f "$DEST")" = "$SRC" ]; then
 		echo "Link already exists: $DEST -> $SRC"
 		return
 	fi

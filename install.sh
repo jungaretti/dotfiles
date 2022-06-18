@@ -9,6 +9,7 @@ source "./scripts/dots.sh"
 
 start
 
+echo "Instaling dotfiles..."
 collect link ~/.gitconfig \
     --src src/git/gitconfig
 collect link ~/.vimrc \
@@ -66,5 +67,15 @@ collect link ~/.config/rofi \
     --if '[ "$USE_CUSTOM_WM" = "true" ]' \
     --src src/rofi \
     --create
+
+if [ -n "$CODESPACE_NAME" ] && devcontainer-info | grep 'Definition ID: codespaces-linux' &>/dev/null; then
+    echo "Installing kitchensink tools..."
+    
+    echo "Installing ripgrep:"
+    collect sudo apt-get -yq install ripgrep
+
+    echo "Installing fnm:"
+    curl -fsSL https://fnm.vercel.app/install | collect bash
+fi
 
 report

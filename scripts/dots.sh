@@ -1,24 +1,24 @@
 #!/bin/bash
 
-collect() {
-	"$@" || FAILURE="true"
-}
-
 start() {
 	export FAILURE="false"
 }
 
+collect() {
+	"$@" || FAILURE="true"
+}
+
 report() {
 	if [ "$FAILURE" = "false" ]; then
-		echo "All tasks completed successfully!"
+		echo "All tasks completed successfully!" >&2
 	else
-		echo "Some tasks didn't complete successfully"
+		echo -e "$(tput bold)$(tput setaf 1)Some tasks didn't complete successfully" >&2
 		return 1
 	fi
 }
 
 link() {
-	SRC=""
+	SRC_REL=""
 	CREATE="false"
 	RELINK="false"
 	FORCE="false"
@@ -29,7 +29,7 @@ link() {
 	while [[ $# -gt 0 ]]; do
 		case $1 in
 		-s | --src)
-			SRC="$2"
+			SRC_REL="$2"
 			shift
 			shift
 			;;
@@ -60,13 +60,13 @@ link() {
 			;;
 		esac
 	done
-
-	SRC="$(readlink -f "$SRC")"
-	DEST="${ARGS[0]}"
+	
+	DEST_REL="${ARGS[0]}"
+	SRC="$(readlink -f "$SRC_REL")"
 
 	# Make sure source exists
 	if [ ! -e "$SRC" ]; then
-		echo "Source does not exist: $SRC"
+		echo "Source does not exist: $SRC_REL"
 		return 1
 	fi
 
@@ -77,7 +77,8 @@ link() {
 	fi
 
 	# Skip if valid link already exists
-	if [ "$(readlink -f "$DEST")" = "$SRC" ]; then
+	DEST="$(readlink -f "$DEST_REL")"
+	if [ "$DEST" = "$SRC" ]; then
 		echo "Link already exists: $DEST -> $SRC"
 		return
 	fi

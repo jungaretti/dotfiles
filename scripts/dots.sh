@@ -1,14 +1,14 @@
 #!/bin/bash
 
-collect_failure() {
+collect() {
 	"$@" || FAILURE="true"
 }
 
-reset_failure() {
+start() {
 	export FAILURE="false"
 }
 
-report_failure() {
+report() {
 	if [ "$FAILURE" = "false" ]; then
 		echo "All tasks completed successfully!"
 	else

@@ -102,6 +102,7 @@ alias lsl="ls -l"
 export EDITOR=vim
 export GPG_TTY=$(tty)
 
+export PATH="$HOME/.fnm:$PATH"
 if [[ "$(command -v fnm)" ]]
 then
     eval "$(fnm env)"

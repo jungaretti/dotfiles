@@ -45,7 +45,8 @@ Clone this repo and install my dotfiles using `./install.sh`.
 
 ```sh
 gh repo clone jungaretti/dotfiles
-./dotfiles/install
+cd dotfiles
+./install.sh
 ```
 
 ### Install Apps and Tools

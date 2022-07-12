@@ -102,6 +102,11 @@ alias lsl="ls -l"
 export EDITOR=vim
 export GPG_TTY=$(tty)
 
+if [ -n "$(command -v fnm)" ]
+then
+    eval "$(fnm env)"
+fi
+
 config_ext_profiles() {
     ALIAS="$1"
     PROFILE_DIR="$2"
@@ -111,7 +116,7 @@ config_ext_profiles() {
         return
     fi
 
-    echo "Creating new profiles: $PROFILE_DIR"
+    echo "Creating profiles directory: $PROFILE_DIR"
     mkdir -p "$PROFILE_DIR"
 
     PROFILE_LOCAL="$PROFILE_DIR/codespaces-settings-local.json"
@@ -121,17 +126,18 @@ config_ext_profiles() {
   \"logTelemetry\": true,
   \"vscsTargetUrl\": \"https://codespaces.servicebus.windows.net/$ALIAS\",
   \"vscsRegion\": \"WestUs2\",
-  \"vscsTarget\": \"local\",
+  \"vscsTarget\": \"local\"
 }" >> $PROFILE_LOCAL
 
+    # TODO: Why doesn't this work?
     PROFILE_DEV="$PROFILE_DIR/codespaces-settings-dev.json"
     echo "Creating dev profile: $PROFILE_DEV"
     echo "{
   \"isInternal\": true,
   \"logTelemetry\": true,
-  \"vscsTargetUrl\": \"<DEV ENDPOINT>\",
+  \"vscsTargetUrl\": \"https://online.dev.core.vsengsaas.visualstudio.com\",
   \"vscsRegion\": \"WestUs2\",
-  \"vscsTarget\": \"dev\",
+  \"vscsTarget\": \"dev\"
 }" >> $PROFILE_DEV
 
     PROFILE_PPE="$PROFILE_DIR/codespaces-settings-ppe.json"
@@ -139,9 +145,9 @@ config_ext_profiles() {
     echo "{
   \"isInternal\": true,
   \"logTelemetry\": true,
-  \"vscsTargetUrl\": \"<PPE ENDPOINT>\",
-  \"vscsRegion\": \"<PPE REGION>\",
-  \"vscsTarget\": \"ppe\",
+  \"vscsTargetUrl\": \"https://online-ppe.core.vsengsaas.visualstudio.com\",
+  \"vscsRegion\": \"WestUs2\",
+  \"vscsTarget\": \"ppe\"
 }" >> $PROFILE_PPE
 
     PROFILE_PROD="$PROFILE_DIR/codespaces-settings-prod.json"
@@ -149,9 +155,9 @@ config_ext_profiles() {
     echo "{
   \"isInternal\": true,
   \"logTelemetry\": true,
-  \"vscsTargetUrl\": \"<PROD ENDPOINT>\",
-  \"vscsRegion\": \"<PROD REGION>\",
-  \"vscsTarget\": \"prod\",
+  \"vscsTargetUrl\": \"https://online.visualstudio.com\",
+  \"vscsRegion\": \"WestUs2\",
+  \"vscsTarget\": \"prod\"
 }" >> $PROFILE_PROD
 }
 
@@ -163,21 +169,9 @@ export config_ext() {
     config_ext_profiles "$ALIAS" "$PROFILE_DIR"
 
     case $TARGET in
-        "local")
-            echo "local"
-            # Link ~/codespaces-settings to local profile
-            ;;
-        "dev")
-            echo "dev"
-            # Link ~/codespaces-settings to dev profile
-            ;;
-        "ppe")
-            echo "ppe"
-            # Link ~/codespaces-settings to ppe profile
-            ;;
-        "prod")
-            echo "prod"
-            # Link ~/codespaces-settings to prod profile
+        "local" | "dev" | "ppe" | "prod")
+            ln -sf "$PROFILE_DIR/codespaces-settings-$TARGET.json" ~/codespaces-settings.json && \
+            cat ~/codespaces-settings.json
             ;;
         *)
             echo "Unknown target: $TARGET"
@@ -185,8 +179,3 @@ export config_ext() {
             ;;
     esac
 }
-
-if [[ "$(command -v fnm)" ]]
-then
-    eval "$(fnm env)"
-fi

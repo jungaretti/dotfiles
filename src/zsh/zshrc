@@ -102,9 +102,8 @@ alias lsl="ls -l"
 export EDITOR=vim
 export GPG_TTY=$(tty)
 
-if [ -n "$(command -v fnm)" ]
-then
-    eval "$(fnm env)"
+if [ -n "$(command -v fnm)" ]; then
+  eval "$(fnm env)"
 fi
 
 config_ext_profiles() {

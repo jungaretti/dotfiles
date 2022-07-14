@@ -106,75 +106,78 @@ if [ -n "$(command -v fnm)" ]; then
   eval "$(fnm env)"
 fi
 
-config_ext_profiles() {
-    ALIAS="$1"
-    PROFILE_DIR="$2"
+write_profile() {
+  local PROFILE="$1"
+  local TARGET="$2"
+  local TARGET_URL="$3"
+  local REGION="$4"
 
-    if [ -e "$PROFILE_DIR" ]; then
-        echo "Using existing profiles: $PROFILE_DIR"
-        return
+  echo "{
+  \"isInternal\": true,
+  \"logTelemetry\": true,
+  \"vscsTarget\": \"$TARGET\",
+  \"vscsTargetUrl\": \"$TARGET_URL\",
+  \"vscsRegion\": \"$REGION\"
+}" >>"$PROFILE"
+}
+
+setup_all_profiles() {
+  if [ -e "$PROFILE_DIR" ]; then
+    echo "Using existing profiles: $PROFILE_DIR"
+    return
+  fi
+
+  echo "Creating profiles directory: $PROFILE_DIR"
+  mkdir -p "$PROFILE_DIR"
+
+  write_profile "$PROFILE_DIR/codespaces-settings-local.json" "local" "https://codespaces.servicebus.windows.net/$ALIAS" "WestUs2"
+  write_profile "$PROFILE_DIR/codespaces-settings-dev.json" "development" "https://online.dev.core.vsengsaas.visualstudio.com" "WestUs2"
+  write_profile "$PROFILE_DIR/codespaces-settings-ppe.json" "ppe" "https://online-ppe.core.vsengsaas.visualstudio.com" "WestUs2"
+  write_profile "$PROFILE_DIR/codespaces-settings-prod.json" "prod" "https://online.visualstudio.com" "WestUs2"
+}
+
+config_ext() {
+  TARGET="${1:-prod}"
+  # Todo: trash these
+  ALIAS="${2:-jpungaretti}"
+  PROFILE_DIR="${3:-$HOME/codespaces-profiles}"
+
+  setup_all_profiles "$ALIAS" "$PROFILE_DIR"
+
+  case $TARGET in
+  "local" | "dev" | "ppe" | "prod")
+    ln -sf "$PROFILE_DIR/codespaces-settings-$TARGET.json" ~/codespaces-settings.json
+    cat ~/codespaces-settings.json
+    ;;
+  *)
+    echo "Unknown target: $TARGET"
+    return 1
+    ;;
+  esac
+}
+
+# this is a custom function that provides matches for the bash autocompletion
+_config_ext_complete() {
+  envs=(local dev ppe prod)
+
+  # echo hello
+  # [ -z "$2" ] && echo empty dollar2 || echo not empty dollar2
+
+  # if [ "$2" = "--" ]; then
+  #   COMPREPLY="${envs[@]}"
+  #   return
+  # fi 
+
+  for env in "${envs[@]}"; do
+    # existing text is $2
+    if [[ "$env" =~ "^$2" ]] || [[ "$2" = "--" ]]; then
+      COMPREPLY+=( "$env" )
     fi
-
-    echo "Creating profiles directory: $PROFILE_DIR"
-    mkdir -p "$PROFILE_DIR"
-
-    PROFILE_LOCAL="$PROFILE_DIR/codespaces-settings-local.json"
-    echo "Creating local profile: $PROFILE_LOCAL"
-    echo "{
-  \"isInternal\": true,
-  \"logTelemetry\": true,
-  \"vscsTargetUrl\": \"https://codespaces.servicebus.windows.net/$ALIAS\",
-  \"vscsRegion\": \"WestUs2\",
-  \"vscsTarget\": \"local\"
-}" >> $PROFILE_LOCAL
-
-    # TODO: Why doesn't this work?
-    PROFILE_DEV="$PROFILE_DIR/codespaces-settings-dev.json"
-    echo "Creating dev profile: $PROFILE_DEV"
-    echo "{
-  \"isInternal\": true,
-  \"logTelemetry\": true,
-  \"vscsTargetUrl\": \"https://online.dev.core.vsengsaas.visualstudio.com\",
-  \"vscsRegion\": \"WestUs2\",
-  \"vscsTarget\": \"dev\"
-}" >> $PROFILE_DEV
-
-    PROFILE_PPE="$PROFILE_DIR/codespaces-settings-ppe.json"
-    echo "Creating PPE profile: $PROFILE_PPE"
-    echo "{
-  \"isInternal\": true,
-  \"logTelemetry\": true,
-  \"vscsTargetUrl\": \"https://online-ppe.core.vsengsaas.visualstudio.com\",
-  \"vscsRegion\": \"WestUs2\",
-  \"vscsTarget\": \"ppe\"
-}" >> $PROFILE_PPE
-
-    PROFILE_PROD="$PROFILE_DIR/codespaces-settings-prod.json"
-    echo "Creating prod profile: $PROFILE_PROD"
-    echo "{
-  \"isInternal\": true,
-  \"logTelemetry\": true,
-  \"vscsTargetUrl\": \"https://online.visualstudio.com\",
-  \"vscsRegion\": \"WestUs2\",
-  \"vscsTarget\": \"prod\"
-}" >> $PROFILE_PROD
+  done
 }
 
-export config_ext() {
-    TARGET="${1:=prod}"
-    ALIAS="${2:=jpungaretti}"
-    PROFILE_DIR="${3:=$HOME/codespaces-profiles}"
+# this line registers our custom autocompletion function to be invoked 
+# when completing arguments to the repo command
+complete -F _config_ext_complete config_ext
 
-    config_ext_profiles "$ALIAS" "$PROFILE_DIR"
-
-    case $TARGET in
-        "local" | "dev" | "ppe" | "prod")
-            ln -sf "$PROFILE_DIR/codespaces-settings-$TARGET.json" ~/codespaces-settings.json && \
-            cat ~/codespaces-settings.json
-            ;;
-        *)
-            echo "Unknown target: $TARGET"
-            return 1
-            ;;
-    esac
-}
+export config_ext

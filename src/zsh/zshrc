@@ -138,7 +138,7 @@ setup_all_profiles() {
 
 config_ext() {
   TARGET="${1:-prod}"
-  # Todo: trash these
+  # TODO: remove these, if you build profiles for jpungaretti they won't work for billgates
   ALIAS="${2:-jpungaretti}"
   PROFILE_DIR="${3:-$HOME/codespaces-profiles}"
 
@@ -155,29 +155,6 @@ config_ext() {
     ;;
   esac
 }
-
-# this is a custom function that provides matches for the bash autocompletion
-_config_ext_complete() {
-  envs=(local dev ppe prod)
-
-  # echo hello
-  # [ -z "$2" ] && echo empty dollar2 || echo not empty dollar2
-
-  # if [ "$2" = "--" ]; then
-  #   COMPREPLY="${envs[@]}"
-  #   return
-  # fi 
-
-  for env in "${envs[@]}"; do
-    # existing text is $2
-    if [[ "$env" =~ "^$2" ]] || [[ "$2" = "--" ]]; then
-      COMPREPLY+=( "$env" )
-    fi
-  done
-}
-
-# this line registers our custom autocompletion function to be invoked 
-# when completing arguments to the repo command
-complete -F _config_ext_complete config_ext
-
+config_options='local dev ppe prod'
+complete -W "$config_options" config_ext
 export config_ext

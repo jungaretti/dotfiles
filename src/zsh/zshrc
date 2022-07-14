@@ -85,55 +85,44 @@ if [ -n "$(command -v fnm)" ]; then
   eval "$(fnm env)"
 fi
 
+export MS_ALIAS="jpungaretti"
+export PROFILE_DIR="$HOME/codespaces/profiles"
+
 write_profile() {
-  local PROFILE="$1"
-  local TARGET="$2"
-  local TARGET_URL="$3"
-  local REGION="$4"
+  local file="$1"
+  local target="$2"
+  local targetUrl="$3"
+  local region="$4"
 
-  echo "{
-  \"isInternal\": true,
-  \"logTelemetry\": true,
-  \"vscsTarget\": \"$TARGET\",
-  \"vscsTargetUrl\": \"$TARGET_URL\",
-  \"vscsRegion\": \"$REGION\"
-}" >>"$PROFILE"
-}
-
-setup_all_profiles() {
-  if [ -e "$PROFILE_DIR" ]; then
-    echo "Using existing profiles: $PROFILE_DIR"
-    return
-  fi
-
-  echo "Creating profiles directory: $PROFILE_DIR"
-  mkdir -p "$PROFILE_DIR"
-
-  write_profile "$PROFILE_DIR/codespaces-settings-local.json" "local" "https://codespaces.servicebus.windows.net/$ALIAS" "WestUs2"
-  write_profile "$PROFILE_DIR/codespaces-settings-dev.json" "development" "https://online.dev.core.vsengsaas.visualstudio.com" "WestUs2"
-  write_profile "$PROFILE_DIR/codespaces-settings-ppe.json" "ppe" "https://online-ppe.core.vsengsaas.visualstudio.com" "WestUs2"
-  write_profile "$PROFILE_DIR/codespaces-settings-prod.json" "prod" "https://online.visualstudio.com" "WestUs2"
+  jq -n --arg target "$target" --arg targetUrl "$targetUrl" --arg region "$region" '{isInternal: true, logTelemetry: true, vscsTarget: $target, vscsTargetUrl: $targetUrl, vscsRegion: $region}' > "$file"
 }
 
 config_ext() {
-  TARGET="${1:-prod}"
-  # TODO: remove these, if you build profiles for jpungaretti they won't work for billgates
-  ALIAS="${2:-jpungaretti}"
-  PROFILE_DIR="${3:-$HOME/codespaces-profiles}"
+  local target="${1:-prod}"
 
-  setup_all_profiles "$ALIAS" "$PROFILE_DIR"
+  # Generate profiles if needed
+  if [ -e "$PROFILE_DIR" ]; then
+    echo "Using existing profiles in $PROFILE_DIR"
+  else
+    echo "Creating new profiles in $PROFILE_DIR..."
+    mkdir -p "$PROFILE_DIR"
 
-  case $TARGET in
+    write_profile "$PROFILE_DIR/local.json" "local" "https://codespaces.servicebus.windows.net/$MS_ALIAS" "WestUs2"
+    write_profile "$PROFILE_DIR/dev.json" "development" "https://online.dev.core.vsengsaas.visualstudio.com" "WestUs2"
+    write_profile "$PROFILE_DIR/ppe.json" "ppe" "https://online-ppe.core.vsengsaas.visualstudio.com" "WestUs2"
+    write_profile "$PROFILE_DIR/prod.json" "prod" "https://online.visualstudio.com" "WestUs2"
+  fi
+
+  case $target in
   "local" | "dev" | "ppe" | "prod")
-    ln -sf "$PROFILE_DIR/codespaces-settings-$TARGET.json" ~/codespaces-settings.json
-    cat ~/codespaces-settings.json
+    ln -sf "$PROFILE_DIR/$target.json" ~/codespaces-settings.json && cat ~/codespaces-settings.json
     ;;
   *)
-    echo "Unknown target: $TARGET"
+    echo "Unknown target: $target"
     return 1
     ;;
   esac
 }
-config_options='local dev ppe prod'
-complete -W "$config_options" config_ext
+
+complete -W "local dev ppe prod" config_ext
 export config_ext

@@ -107,7 +107,7 @@ config_ext() {
 
   if [ ! -e "$cs_settings_file" ]; then
     echo "Creating new config file $cs_settings_file"
-    jq -n '{isInternal: true, logTelemetry: true}' > "$cs_settings_file"
+    jq -n '{isInternal: true, logTelemetry: true}' >"$cs_settings_file"
   fi
 
   vscs_target=""
@@ -142,7 +142,7 @@ config_ext() {
 
   # Update Codespaces config file
   temp="$(mktemp)"
-  jq --arg target "$vscs_target" --arg targetUrl "$vscs_target_url" --arg region "$vscs_region" '. += {vscsTarget: $target, vscsTargetUrl: $targetUrl, vscsRegion: $region}' "$cs_settings_file" > "$temp"
+  jq --arg target "$vscs_target" --arg targetUrl "$vscs_target_url" --arg region "$vscs_region" '. += {vscsTarget: $target, vscsTargetUrl: $targetUrl, vscsRegion: $region}' "$cs_settings_file" >"$temp"
   mv "$temp" "$cs_settings_file"
 
   # TODO: Update environment variables

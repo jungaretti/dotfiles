@@ -86,7 +86,9 @@ source "$ZSH/oh-my-zsh.sh"
 alias lsl="ls -l"
 
 export EDITOR=vim
-export GPG_TTY=$(tty)
+
+# Fix git commit signing
+export GPG_TTY="$(tty)"
 
 # Add npm to PATH via fnm
 if [ -n "$(command -v fnm)" ]; then

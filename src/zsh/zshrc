@@ -117,8 +117,8 @@ cs_update_settings() {
   fi
 
   if [ ! -e "$cs_settings_file" ]; then
-    echo "Creating new config file $cs_settings_file"
     jq -n '{isInternal: true, logTelemetry: true}' >"$cs_settings_file"
+    echo "Created new settings file: $cs_settings_file"
   fi
 
   local vscs_target=""

@@ -1,3 +1,7 @@
+# |\---/| Oh My Zsh
+# | o_o | Configuration
+#  \_^_/
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -74,19 +78,27 @@ plugins=(brew git)
 
 source "$ZSH/oh-my-zsh.sh"
 
-# User configuration
+#   / _ \   User Configuration
+# \_\(_)/_/
+#  _//o\\_
+#   /   \
 
 alias lsl="ls -l"
 
 export EDITOR=vim
 export GPG_TTY=$(tty)
 
+# Add npm to PATH via fnm
 if [ -n "$(command -v fnm)" ]; then
   eval "$(fnm env)"
 fi
 
-export MS_ALIAS="jpungaretti"
-export PROFILE_DIR="$HOME/codespaces/profiles"
+#       __)\_    Codespaces
+# (\_.-'    a`-. Configuration
+# (/~~````(/~^^`
+
+cs_ms_alias="jpungaretti"
+cs_profile_dir="$HOME/codespaces/profiles"
 
 write_profile() {
   local file="$1"

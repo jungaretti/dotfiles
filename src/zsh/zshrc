@@ -107,27 +107,28 @@ write_profile() {
   local region="$4"
 
   jq -n --arg target "$target" --arg targetUrl "$targetUrl" --arg region "$region" '{isInternal: true, logTelemetry: true, vscsTarget: $target, vscsTargetUrl: $targetUrl, vscsRegion: $region}' > "$file"
+  echo "Created $file"
 }
 
 config_ext() {
   local target="${1:-prod}"
 
   # Generate profiles if needed
-  if [ -e "$PROFILE_DIR" ]; then
-    echo "Using existing profiles in $PROFILE_DIR"
+  if [ -e "$cs_profile_dir" ]; then
+    echo "Using existing profiles in $cs_profile_dir"
   else
-    echo "Creating new profiles in $PROFILE_DIR..."
-    mkdir -p "$PROFILE_DIR"
+    echo "Creating new profiles in $cs_profile_dir..."
+    mkdir -p "$cs_profile_dir"
 
-    write_profile "$PROFILE_DIR/local.json" "local" "https://codespaces.servicebus.windows.net/$MS_ALIAS" "WestUs2"
-    write_profile "$PROFILE_DIR/dev.json" "development" "https://online.dev.core.vsengsaas.visualstudio.com" "WestUs2"
-    write_profile "$PROFILE_DIR/ppe.json" "ppe" "https://online-ppe.core.vsengsaas.visualstudio.com" "WestUs2"
-    write_profile "$PROFILE_DIR/prod.json" "prod" "https://online.visualstudio.com" "WestUs2"
+    write_profile "$cs_profile_dir/local.json" "local" "https://codespaces.servicebus.windows.net/$cs_ms_alias" "WestUs2"
+    write_profile "$cs_profile_dir/dev.json" "development" "https://online.dev.core.vsengsaas.visualstudio.com" "WestUs2"
+    write_profile "$cs_profile_dir/ppe.json" "ppe" "https://online-ppe.core.vsengsaas.visualstudio.com" "WestUs2"
+    write_profile "$cs_profile_dir/prod.json" "prod" "https://online.visualstudio.com" "WestUs2"
   fi
 
   case $target in
   "local" | "dev" | "ppe" | "prod")
-    ln -sf "$PROFILE_DIR/$target.json" ~/codespaces-settings.json && cat ~/codespaces-settings.json
+    ln -sf "$cs_profile_dir/$target.json" ~/codespaces-settings.json && cat ~/codespaces-settings.json
     ;;
   *)
     echo "Unknown target: $target"

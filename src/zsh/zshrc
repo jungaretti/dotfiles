@@ -111,6 +111,11 @@ cs_export_settings() {
 cs_update_settings() {
   local target="${1:-prod}"
 
+  if [ -z "$ms_alias" ]; then
+    echo "ERROR: You must set your Microsoft alias before updating Codespaces settings"
+    return 1
+  fi
+
   if [ ! -e "$cs_settings_file" ]; then
     echo "Creating new config file $cs_settings_file"
     jq -n '{isInternal: true, logTelemetry: true}' >"$cs_settings_file"

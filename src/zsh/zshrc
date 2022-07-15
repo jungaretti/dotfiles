@@ -102,17 +102,23 @@ fi
 ms_alias="jpungaretti"
 cs_settings_file="$HOME/codespaces-settings.json"
 
-config_ext() {
-  target="${1:-prod}"
+cs_export_settings() {
+  export VSCS_TARGET="$(jq -r '.vscsTarget' $cs_settings_file)"
+  export VSCS_TARGET_URL="$(jq -r '.vscsTargetUrl' $cs_settings_file)"
+  export VSCS_LOCATION="$(jq -r '.vscsRegion' $cs_settings_file)"
+}
+
+cs_update_settings() {
+  local target="${1:-prod}"
 
   if [ ! -e "$cs_settings_file" ]; then
     echo "Creating new config file $cs_settings_file"
     jq -n '{isInternal: true, logTelemetry: true}' >"$cs_settings_file"
   fi
 
-  vscs_target=""
-  vscs_target_url=""
-  vscs_region=""
+  local vscs_target=""
+  local vscs_target_url=""
+  local vscs_region=""
   case $target in
   "local")
     vscs_target="local"
@@ -141,14 +147,17 @@ config_ext() {
   esac
 
   # Update Codespaces config file
-  temp="$(mktemp)"
+  local temp="$(mktemp)"
   jq --arg target "$vscs_target" --arg targetUrl "$vscs_target_url" --arg region "$vscs_region" '. += {vscsTarget: $target, vscsTargetUrl: $targetUrl, vscsRegion: $region}' "$cs_settings_file" >"$temp"
   mv "$temp" "$cs_settings_file"
 
-  # TODO: Update environment variables
+  # Update VSCS environment variables
+  cs_export_settings
 
   cat "$cs_settings_file"
 }
 
-complete -W "local dev ppe prod" config_ext
-export config_ext
+complete -W "local dev ppe prod" cs_update_settings
+export cs_update_settings
+
+alias config_cs="cs_update_settings"

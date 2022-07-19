@@ -103,16 +103,26 @@ ms_alias="jpungaretti"
 cs_settings_file="$HOME/codespaces-settings.json"
 
 cs_export() {
-  export VSCS_TARGET="$(jq -r '.vscsTarget' $cs_settings_file)"
-  export VSCS_TARGET_URL="$(jq -r '.vscsTargetUrl' $cs_settings_file)"
-  export VSCS_LOCATION="$(jq -r '.vscsRegion' $cs_settings_file)"
+  export VSCS_TARGET="$(jq -r '.vscsTarget // ""' $cs_settings_file)"
+  export VSCS_TARGET_URL="$(jq -r '.vscsTargetUrl // ""' $cs_settings_file)"
+  export VSCS_LOCATION="$(jq -r '.vscsRegion // ""' $cs_settings_file)"
+}
+
+cs_print() {
+  local target="prod"
+  local location="default"
+
+  [ -n "$VSCS_TARGET" ] && target="$VSCS_TARGET"
+  [ -n "$VSCS_LOCATION" ] && location="$VSCS_LOCATION"
+
+  echo "Codespaces target: $target ($location)"
 }
 
 cs_update() {
   local target="${1:-prod}"
 
   if [ -z "$ms_alias" ]; then
-    echo "ERROR: You must set your Microsoft alias before updating Codespaces settings"
+    echo "You must set your Microsoft alias before updating Codespaces settings"
     return 1
   fi
 
@@ -141,9 +151,7 @@ cs_update() {
     vscs_region="WestUs2"
     ;;
   "prod")
-    vscs_target="prod"
-    vscs_target_url="https://online.visualstudio.com"
-    vscs_region="WestUs2"
+    # Use empty strings for default settings
     ;;
   *)
     echo "Unknown target: $target"
@@ -165,4 +173,10 @@ cs_update() {
 complete -W "local dev ppe prod" cs_update
 export cs_update
 
+# Define a more friendly alias
 alias config_cs="cs_update"
+
+# Read existing Codespaces settings
+if [ -e "$cs_settings_file" ]; then
+  cs_export && cs_print
+fi

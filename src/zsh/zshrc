@@ -179,9 +179,11 @@ cs_update() {
 
   cat "$cs_settings_file"
 }
-
-complete -W "local dev ppe prod" cs_update
 export cs_update
+
+if command -v complete &>/dev/null; then
+  complete -W "local dev ppe prod" cs_update
+fi
 
 alias config_cs="cs_update"
 

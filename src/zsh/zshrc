@@ -104,16 +104,25 @@ cs_settings_file="$HOME/codespaces-settings.json"
 
 cs_export() {
   export VSCS_TARGET="$(jq -r '.vscsTarget // ""' $cs_settings_file)"
-  export VSCS_TARGET_URL="$(jq -r '.vscsTargetUrl // ""' $cs_settings_file)"
   export VSCS_LOCATION="$(jq -r '.vscsRegion // ""' $cs_settings_file)"
+
+  # VSCS_TARGET_URL must be empty unless VSCS_TARGET is local
+  export VSCS_TARGET_URL=""
+  if [ "$VSCS_TARGET" = 'local' ]; then
+    VSCS_TARGET_URL="$(jq -r '.vscsTargetUrl // ""' $cs_settings_file)"
+  fi
 }
 
 cs_print() {
   local target="prod"
   local location="default"
 
-  [ -n "$VSCS_TARGET" ] && target="$VSCS_TARGET"
-  [ -n "$VSCS_LOCATION" ] && location="$VSCS_LOCATION"
+  if [ -n "$VSCS_TARGET" ]; then
+    target="$VSCS_TARGET"
+  fi
+  if [ -n "$VSCS_LOCATION" ]; then
+    location="$VSCS_LOCATION"
+  fi
 
   echo "Codespaces target: $target ($location)"
 }
@@ -173,7 +182,7 @@ cs_update() {
 complete -W "local dev ppe prod" cs_update
 export cs_update
 
-# Define a more friendly alias
+# Set a more friendly alias
 alias config_cs="cs_update"
 
 # Read existing Codespaces settings

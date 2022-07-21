@@ -1,6 +1,6 @@
-# |\---/| Oh My Zsh
-# | o_o | Configuration
-#  \_^_/
+# ┌────────────────────────────┐
+# │     Oh My Zsh Settings     │
+# └────────────────────────────┘
 
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
@@ -78,10 +78,9 @@ plugins=(brew git)
 
 source "$ZSH/oh-my-zsh.sh"
 
-#   / _ \   User Configuration
-# \_\(_)/_/
-#  _//o\\_
-#   /   \
+# ┌────────────────────────────┐
+# │       General Config       │
+# └────────────────────────────┘
 
 alias lsl="ls -l"
 
@@ -95,9 +94,9 @@ if [ -n "$(command -v fnm)" ]; then
   eval "$(fnm env)"
 fi
 
-#       __)\_    Codespaces
-# (\_.-'    a`-. Configuration
-# (/~~````(/~^^`
+# ┌────────────────────────────┐
+# │     Codespaces Config      │
+# └────────────────────────────┘
 
 ms_alias="jpungaretti"
 cs_settings_file="$HOME/codespaces-settings.json"

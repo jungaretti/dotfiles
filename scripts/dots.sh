@@ -10,7 +10,7 @@ collect() {
 
 report() {
 	if [ "$FAILURE" = "false" ]; then
-		echo "All tasks completed successfully!" >&2
+		echo "All tasks completed successfully!"
 	else
 		echo -e "$(tput bold)$(tput setaf 1)Some tasks didn't complete successfully" >&2
 		return 1

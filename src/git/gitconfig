@@ -1,6 +1,6 @@
 [user]
 	name = JP Ungaretti
-	email = hello@jungaretti.com
+	email = git@jungaretti.com
 [init]
 	defaultBranch = main
 [pull]

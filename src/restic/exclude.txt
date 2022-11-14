@@ -15,9 +15,11 @@ OneDrive
 node_modules
 
 *.fcpbundle/**/Render Files
-Lightroom Catalog Helper.lrdata
-Lightroom Catalog Previews.lrdata
-Lightroom Catalog.lrcat-data
+Lightroom*.lrdata
+Lightroom*.lock
+Lightroom*.lrcat-data
+Lightroom*.lrcat-shm
+Lightroom*.lrcat-wal
 Photos Library.photoslibrary
 
 *.icloud

@@ -83,6 +83,7 @@ source "$ZSH/oh-my-zsh.sh"
 # └────────────────────────────┘
 
 alias lsl="ls -l"
+alias backup_honeycrisp="crestic honeycrisp@b2 backup && crestic honeycrisp@nas backup"
 
 export EDITOR=vim
 

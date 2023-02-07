@@ -1,9 +1,10 @@
 syntax enable
 
-set expandtab
 set shiftwidth=4
+set expandtab
+set smarttab
+
 set autoindent
-set smartindent
 
 " Highlight search results
 set hlsearch

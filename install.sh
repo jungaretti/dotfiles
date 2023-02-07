@@ -15,7 +15,7 @@ collect link ~/.gitconfig \
 collect link ~/.vimrc \
     --src src/vim/vimrc
 collect link ~/.zshrc \
-    --src src/shell/zshrc \
+    --src src/zsh/zshrc \
     --force
 collect link ~/.config/alacritty/alacritty.yml \
     --src src/alacritty/alacritty.yml \

@@ -43,17 +43,9 @@ collect link ~/Library/Application\ Support/iTerm2/DynamicProfiles/Profiles.json
     --create
 
 # Arch Linux with i3 window manager
-collect link ~/.xinitrc \
-    --if '[ "$USE_CUSTOM_WM" = "true" ]' \
-    --src src/xinit/xinitrc \
-    --create
 collect link ~/.config/dunst/dunstrc \
     --if '[ "$USE_CUSTOM_WM" = "true" ]' \
     --src src/dunst/dunstrc \
-    --create
-collect link ~/.config/fontconfig/fonts.conf \
-    --if '[ "$USE_CUSTOM_WM" = "true" ]' \
-    --src src/fontconfig/fonts.conf \
     --create
 collect link ~/.config/i3 \
     --if '[ "$USE_CUSTOM_WM" = "true" ]' \

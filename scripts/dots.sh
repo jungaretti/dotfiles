@@ -1,15 +1,15 @@
 #!/bin/bash
 
 start() {
-	export FAILURE="false"
+	export DOTS_FAILURE="false"
 }
 
 collect() {
-	"$@" || FAILURE="true"
+	"$@" || DOTS_FAILURE="true"
 }
 
 report() {
-	if [ "$FAILURE" = "false" ]; then
+	if [ "$DOTS_FAILURE" = "false" ]; then
 		echo "All tasks completed successfully!"
 	else
 		echo -e "$(tput bold)$(tput setaf 1)Some tasks didn't complete successfully" >&2

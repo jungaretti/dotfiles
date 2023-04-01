@@ -1,10 +1,10 @@
-syntax enable
-
-set shiftwidth=4
 set expandtab
+set shiftwidth=4
 set smarttab
 
 set autoindent
 
-" Highlight search results
+set backspace=indent,eol,start
+
+syntax enable
 set hlsearch

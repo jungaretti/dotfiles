@@ -125,9 +125,6 @@ collect link ~/.vimrc \
 collect link ~/.zshrc \
     --src src/zsh/zshrc \
     --force
-collect link ~/.config/alacritty/alacritty.yml \
-    --src src/alacritty/alacritty.yml \
-    --create
 collect link ~/.config/crestic/crestic.cfg \
     --src src/crestic/crestic.cfg \
     --create

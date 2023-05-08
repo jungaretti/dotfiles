@@ -10,7 +10,7 @@ Are you ready to set up a new computer for me? Fire up your favorite terminal an
 
 ### Generate SSH Key
 
-Generate a new SSH key using `ssh-keygen` and share it with GitHub. You can use the [GitHub CLI](https://cli.github.com/manual/) to do that without a browser.
+Generate a new SSH key using `ssh-keygen` and add it to GitHub. You can use the [GitHub CLI](https://cli.github.com/manual/) to do that without a browser.
 
 ```sh
 # Name the new SSH key
@@ -39,7 +39,7 @@ gh repo clone ohmyzsh/ohmyzsh
 sudo chsh -s /bin/zsh jungaretti
 ```
 
-### Install (These) Dotfiles
+### Install (these) Dotfiles
 
 Clone this repo and install my dotfiles using `./install.sh`.
 

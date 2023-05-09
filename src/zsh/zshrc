@@ -85,6 +85,7 @@ source "$ZSH/oh-my-zsh.sh"
 alias lsl="ls -l"
 alias mount_venus="/usr/bin/osascript -e 'try' -e 'mount volume \"smb://jungaretti@helium.local/Venus\"' -e 'end try'"
 alias backup_honeycrisp="crestic honeycrisp@b2 backup && mount_venus && crestic honeycrisp@nas backup"
+alias prune_honeycrisp="crestic honeycrisp@b2 forget --prune && mount_venus && crestic honeycrisp@nas forget --prune"
 
 export EDITOR=vim
 

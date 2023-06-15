@@ -3,11 +3,6 @@
 set -e
 
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-DOTS_FAILURE="false"
-
-start() {
-    DOTS_FAILURE="false"
-}
 
 collect() {
     "$@" || DOTS_FAILURE="true"
@@ -115,9 +110,9 @@ link() {
 
 echo "Instaling dotfiles..."
 pushd "${BASEDIR}"
-start
 
-# Everywhere
+DOTS_FAILURE="false"
+
 collect link ~/.gitconfig \
     --src src/git/gitconfig
 collect link ~/.vimrc \

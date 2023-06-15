@@ -49,7 +49,7 @@ clean() {
         fi
 
         if [ -e "$target" ]; then
-            echo "Link already exists: $symlink -> $target"
+            echo "Healthy symlink: $symlink -> $target"
             continue
         fi
 

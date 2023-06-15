@@ -4,18 +4,7 @@ set -e
 
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
-collect() {
-    "$@" || DOTS_FAILURE="true"
-}
-
-report() {
-    if [ "$DOTS_FAILURE" = "false" ]; then
-        echo "All tasks completed successfully!"
-    else
-        echo -e "$(tput bold)$(tput setaf 1)Some tasks didn't complete successfully" >&2
-        return 1
-    fi
-}
+source "${BASEDIR}/lib/collect.sh"
 
 link() {
     SRC_REL=""
@@ -111,7 +100,7 @@ link() {
 echo "Instaling dotfiles..."
 pushd "${BASEDIR}"
 
-DOTS_FAILURE="false"
+start
 
 collect link ~/.gitconfig \
     --src src/git/gitconfig

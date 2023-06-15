@@ -4,6 +4,8 @@ set -e
 
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 
+source "${BASEDIR}/lib/collect.sh"
+
 clean() {
     local recurse="false"
 
@@ -57,5 +59,11 @@ clean() {
 }
 
 echo "Cleaning dotfile symlinks..."
-clean --recurse "$HOME/.config"
-clean "$HOME"
+pushd "${BASEDIR}"
+
+start
+
+collect clean --recurse "$HOME/.config"
+collect clean "$HOME"
+
+report

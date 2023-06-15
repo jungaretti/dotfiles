@@ -47,7 +47,7 @@ clean() {
         fi
 
         if [ -e "$target" ]; then
-            echo "Working link: $symlink -> $target"
+            echo "Link already exists: $symlink -> $target"
             continue
         fi
 

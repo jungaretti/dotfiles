@@ -109,8 +109,8 @@ collect link ~/.vimrc \
 collect link ~/.zshrc \
     --src src/zsh/zshrc \
     --force
-collect link ~/.config/crestic/crestic.cfg \
-    --src src/crestic/crestic.cfg \
+collect link ~/.config/crestic/config.cfg \
+    --src src/crestic/config.cfg \
     --create
 collect link ~/.config/gh/config.yml \
     --src src/gh/config.yml \

@@ -68,10 +68,9 @@ Log into Backblaze to create a new storage bucket and generate a new application
 # Backblaze application key
 export B2_ACCOUNT_ID=KEY_ID
 export B2_ACCOUNT_KEY=APPLICATION_KEY
-
-# restic repository password
-export RESTIC_PASSWORD=PASSWORD
 ```
+
+Create a `<host>.password.txt` file or `export RESTIC_PASSWORD` to unlock the repository automatically. See `src/crestic/config.cfg` for more details.
 
 ## Notes
 

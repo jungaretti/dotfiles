@@ -1,11 +1,5 @@
 #!/bin/bash
 
-set -e
-
-BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
-source "${BASEDIR}/lib/collect.sh"
-
 clean() {
     local recurse="false"
 
@@ -58,8 +52,15 @@ clean() {
     done
 }
 
+set -e
+
+BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "${BASEDIR}/lib/collect.sh"
+
 echo "Cleaning dotfile symlinks..."
 pushd "${BASEDIR}"
+
+set +e
 
 start
 

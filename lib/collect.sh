@@ -5,7 +5,10 @@ start() {
 }
 
 collect() {
-    "$@" || COLLECTED_ERROR="true"
+    (set -e -o pipefail; "$@")
+    if [ "$?" -ne 0 ]; then
+        COLLECTED_ERROR="true"
+    fi
 }
 
 report() {

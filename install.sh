@@ -1,11 +1,5 @@
 #!/bin/bash
 
-set -e
-
-BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-
-source "${BASEDIR}/lib/collect.sh"
-
 link() {
     SRC_REL=""
     CREATE="false"
@@ -97,8 +91,15 @@ link() {
     ln -s "$SRC" "$DEST"
 }
 
+set -e
+
+BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
+source "${BASEDIR}/lib/collect.sh"
+
 echo "Instaling dotfiles..."
 pushd "${BASEDIR}"
+
+set +e
 
 start
 

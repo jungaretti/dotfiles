@@ -125,6 +125,9 @@ collect link ~/.config/topgrade.toml \
 collect link ~/.gnupg/gpg-agent.conf \
     --if 'gpg -k' \
     --src src/gnupg/gpg-agent.conf
+collect link ~/.ssh/config \
+    --if 'command -v ssh' \
+    --src src/ssh/config
 
 # macOS
 collect link ~/Library/Application\ Support/iTerm2/DynamicProfiles/Profiles.json \

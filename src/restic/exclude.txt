@@ -1,7 +1,9 @@
 .Trash
 Downloads
 Library
+
 OneDrive
+Movies/Infuse
 
 .cache
 

@@ -119,9 +119,6 @@ collect link ~/.config/gh/config.yml \
 collect link ~/.config/restic/exclude.txt \
     --src src/restic/exclude.txt \
     --create
-collect link ~/.config/topgrade.toml \
-    --src src/topgrade/topgrade.toml \
-    --create
 collect link ~/.gnupg/gpg-agent.conf \
     --if 'gpg -k' \
     --src src/gnupg/gpg-agent.conf

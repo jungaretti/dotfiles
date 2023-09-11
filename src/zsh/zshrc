@@ -1,7 +1,3 @@
-# ┌────────────────────────────┐
-# │     Oh My Zsh Settings     │
-# └────────────────────────────┘
-
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -78,21 +74,23 @@ plugins=(brew git)
 
 source "$ZSH/oh-my-zsh.sh"
 
-# ┌────────────────────────────┐
-# │       General Config       │
-# └────────────────────────────┘
-
 alias lsl="ls -l"
-alias mount_venus="/usr/bin/osascript -e 'try' -e 'mount volume \"smb://jungaretti@helium.local/Venus\"' -e 'end try'"
-alias backup_honeycrisp="crestic honeycrisp@b2 backup && mount_venus && crestic honeycrisp@nas backup"
-alias prune_honeycrisp="crestic honeycrisp@b2 forget --prune && mount_venus && crestic honeycrisp@nas forget --prune"
 
+# Use vim as default editor
 export EDITOR=vim
 
 # Fix git commit signing
 export GPG_TTY="$(tty)"
 
-# Add npm to PATH via fnm
-if [ -n "$(command -v fnm)" ]; then
-  eval "$(fnm env)"
-fi
+# restic
+alias mount_venus="/usr/bin/osascript -e 'try' -e 'mount volume \"smb://jungaretti@helium.local/Venus\"' -e 'end try'"
+alias backup_honeycrisp="crestic honeycrisp@b2 backup && mount_venus && crestic honeycrisp@nas backup"
+alias prune_honeycrisp="crestic honeycrisp@b2 forget --prune && mount_venus && crestic honeycrisp@nas forget --prune"
+
+# fnm
+[ -n "$(command -v fnm)" ] && eval "$(fnm env)"
+
+# bun
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && export BUN_INSTALL="$HOME/.bun"
+[ -s "$HOME/.bun/_bun" ] && export PATH="$BUN_INSTALL/bin:$PATH"

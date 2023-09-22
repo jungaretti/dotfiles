@@ -88,9 +88,13 @@ alias backup_honeycrisp="crestic honeycrisp@b2 backup && mount_venus && crestic 
 alias prune_honeycrisp="crestic honeycrisp@b2 forget --prune && mount_venus && crestic honeycrisp@nas forget --prune"
 
 # fnm
-[ -n "$(command -v fnm)" ] && eval "$(fnm env)"
+if [ -n "$(command -v fnm)" ]; then
+    eval "$(fnm env)"
+fi
 
 # bun
-[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
-[ -s "$HOME/.bun/_bun" ] && export BUN_INSTALL="$HOME/.bun"
-[ -s "$HOME/.bun/_bun" ] && export PATH="$BUN_INSTALL/bin:$PATH"
+if [ -s "$HOME/.bun/_bun" ]; then
+    source "$HOME/.bun/_bun"
+    export BUN_INSTALL="$HOME/.bun"
+    export PATH="$BUN_INSTALL/bin:$PATH"
+fi

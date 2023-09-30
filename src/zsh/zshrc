@@ -83,7 +83,7 @@ export EDITOR=vim
 export GPG_TTY="$(tty)"
 
 # restic
-alias mount_venus="/usr/bin/osascript -e 'try' -e 'mount volume \"smb://jungaretti@helium.local/Venus\"' -e 'end try'"
+alias mount_venus="/usr/bin/osascript -e 'try' -e 'mount volume \"smb://jungaretti@Helium._smb._tcp.local/Venus\"' -e 'end try'"
 alias backup_honeycrisp="crestic honeycrisp@b2 backup && mount_venus && crestic honeycrisp@nas backup"
 alias prune_honeycrisp="crestic honeycrisp@b2 forget --prune && mount_venus && crestic honeycrisp@nas forget --prune"
 

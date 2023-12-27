@@ -101,14 +101,14 @@ DOTFILES_EXIT_CODE=0
 link "$HOME/.gitconfig" \
     --src src/git/gitconfig
 if [ "$?" -ne 0 ]; then
-    echo -e "$(tput bold)$(tput setaf 1)ERROR: Could install dotfile "$HOME/.gitconfig"$(tput sgr0)" >&2
+    echo -e "ERROR: Could install dotfile "$HOME/.gitconfig"" >&2
     DOTFILES_EXIT_CODE=2
 fi
 
 link "$HOME/.vimrc" \
     --src src/vim/vimrc
 if [ "$?" -ne 0 ]; then
-    echo -e "$(tput bold)$(tput setaf 1)ERROR: Could install dotfile "$HOME/.vimrc"$(tput sgr0)" >&2
+    echo -e "ERROR: Could install dotfile "$HOME/.vimrc"" >&2
     DOTFILES_EXIT_CODE=3
 fi
 
@@ -116,7 +116,7 @@ link "$HOME/.zshrc" \
     --src src/zsh/zshrc \
     --force
 if [ "$?" -ne 0 ]; then
-    echo -e "$(tput bold)$(tput setaf 1) "$HOME/.zshrc"OR: Could install dotfile "$HOME/.zshrc"$(tput sgr0)" >&2
+    echo -e "ERROR: Could install dotfile "$HOME/.zshrc"" >&2
     DOTFILES_EXIT_CODE=4
 fi
 
@@ -124,7 +124,7 @@ link "$HOME/.config/crestic/config.cfg" \
     --src src/crestic/config.cfg \
     --create
 if [ "$?" -ne 0 ]; then
-    echo -e "$(tput bold)$(tput setaf 1)ERROR: Could install dotfile "$HOME/.config/crestic/config.cfg"$(tput sgr0)" >&2
+    echo -e "ERROR: Could install dotfile "$HOME/.config/crestic/config.cfg"" >&2
     DOTFILES_EXIT_CODE=5
 fi
 
@@ -132,7 +132,7 @@ link "$HOME/.config/gh/config.yml" \
     --src src/gh/config.yml \
     --create
 if [ "$?" -ne 0 ]; then
-    echo -e "$(tput bold)$(tput setaf 1)ERROR: Could install dotfile "$HOME/.config/gh/config.yml"$(tput sgr0)" >&2
+    echo -e "ERROR: Could install dotfile "$HOME/.config/gh/config.yml"" >&2
     DOTFILES_EXIT_CODE=6
 fi
 
@@ -140,7 +140,7 @@ link "$HOME/.config/restic/exclude.txt" \
     --src src/restic/exclude.txt \
     --create
 if [ "$?" -ne 0 ]; then
-    echo -e "$(tput bold)$(tput setaf 1)ERROR: Could install dotfile "$HOME/.config/restic/exclude.txt"$(tput sgr0)" >&2
+    echo -e "ERROR: Could install dotfile "$HOME/.config/restic/exclude.txt"" >&2
     DOTFILES_EXIT_CODE=7
 fi
 
@@ -148,7 +148,7 @@ link "$HOME/.gnupg/gpg-agent.conf" \
     --if 'gpg -k' \
     --src src/gnupg/gpg-agent.conf
 if [ "$?" -ne 0 ]; then
-    echo -e "$(tput bold)$(tput setaf 1)ERROR: Could install dotfile "$HOME/.gnupg/gpg-agent.conf"$(tput sgr0)" >&2
+    echo -e "ERROR: Could install dotfile "$HOME/.gnupg/gpg-agent.conf"" >&2
     DOTFILES_EXIT_CODE=8
 fi
 
@@ -156,7 +156,7 @@ link "$HOME/.ssh/config" \
     --if 'command -v ssh' \
     --src src/ssh/config
 if [ "$?" -ne 0 ]; then
-    echo -e "$(tput bold)$(tput setaf 1)ERROR: Could install dotfile "$HOME/.ssh/config"$(tput sgr0)" >&2
+    echo -e "ERROR: Could install dotfile "$HOME/.ssh/config"" >&2
     DOTFILES_EXIT_CODE=9
 fi
 
@@ -167,7 +167,7 @@ link "$HOME/Library/Application\ Support/iTerm2/DynamicProfiles/Profiles.json" \
     --src src/iterm/Profiles.json \
     --create
 if [ "$?" -ne 0 ]; then
-    echo -e "$(tput bold)$(tput setaf 1)ERROR: Could install dotfile "$HOME/Library/Application\ Support/iTerm2/DynamicProfiles/Profiles.json"$(tput sgr0)" >&2
+    echo -e "ERROR: Could install dotfile "$HOME/Library/Application\ Support/iTerm2/DynamicProfiles/Profiles.json"" >&2
     DOTFILES_EXIT_CODE=10
 fi
 

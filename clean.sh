@@ -61,13 +61,13 @@ DOTFILES_EXIT_CODE=0
 
 clean --recurse "$HOME/.config"
 if [ "$?" -ne 0 ]; then
-    echo -e "$(tput bold)$(tput setaf 1)ERROR: Could not clean "$HOME/.config/**"$(tput sgr0)" >&2
+    echo -e "ERROR: Could not clean "$HOME/.config/**"" >&2
     DOTFILES_EXIT_CODE=2
 fi
 
 clean "$HOME"
 if [ "$?" -ne 0 ]; then
-    echo -e "$(tput bold)$(tput setaf 1)ERROR: Could not clean "$HOME"$(tput sgr0)" >&2
+    echo -e "ERROR: Could not clean "$HOME"" >&2
     DOTFILES_EXIT_CODE=3
 fi
 

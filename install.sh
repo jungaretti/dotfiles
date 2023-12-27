@@ -160,7 +160,6 @@ if [ "$?" -ne 0 ]; then
     DOTFILES_EXIT_CODE=9
 fi
 
-
 # macOS
 link "$HOME/Library/Application\ Support/iTerm2/DynamicProfiles/Profiles.json" \
     --if '[ "$(uname -s)" = Darwin ]' \
@@ -172,4 +171,3 @@ if [ "$?" -ne 0 ]; then
 fi
 
 exit $DOTFILES_EXIT_CODE
-

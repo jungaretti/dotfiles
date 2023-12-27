@@ -10,8 +10,6 @@ pager: cat
 # Aliases allow you to create nicknames for gh commands
 aliases:
     play: codespace create -R jungaretti/playground -m basicLinux32gb
-    infra: codespace create -R github/codespaces-infrastructure -m premiumLinux
-    service: codespace create -R github/codespaces-service -m largePremiumLinux
 # The path to a unix socket through which send HTTP connections. If blank, HTTP traffic will be handled by net/http.DefaultTransport.
 http_unix_socket:
 # What web browser gh should use when opening URLs. If blank, will refer to environment.

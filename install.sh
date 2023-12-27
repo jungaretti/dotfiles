@@ -153,8 +153,8 @@ if [ "$?" -ne 0 ]; then
 fi
 
 link "$HOME/.ssh/config" \
-    --if 'command -v ssh' \
-    --src src/ssh/config
+    --src src/ssh/config \
+    --create
 if [ "$?" -ne 0 ]; then
     echo -e "ERROR: Could install dotfile "$HOME/.ssh/config"" >&2
     DOTFILES_EXIT_CODE=9

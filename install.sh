@@ -91,45 +91,85 @@ link() {
     ln -s "$SRC" "$DEST"
 }
 
-set -e
-
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source "${BASEDIR}/lib/collect.sh"
 
 echo "Instaling dotfiles..."
 pushd "${BASEDIR}"
 
-set +e
+DOTFILES_EXIT_CODE=0
 
-start
-
-collect link ~/.gitconfig \
+link "$HOME/.gitconfig" \
     --src src/git/gitconfig
-collect link ~/.vimrc \
+if [ "$?" -ne 0 ]; then
+    echo -e "$(tput bold)$(tput setaf 1)ERROR: Could install dotfile "$HOME/.gitconfig"$(tput sgr0)" >&2
+    DOTFILES_EXIT_CODE=2
+fi
+
+link "$HOME/.vimrc" \
     --src src/vim/vimrc
-collect link ~/.zshrc \
+if [ "$?" -ne 0 ]; then
+    echo -e "$(tput bold)$(tput setaf 1)ERROR: Could install dotfile "$HOME/.vimrc"$(tput sgr0)" >&2
+    DOTFILES_EXIT_CODE=3
+fi
+
+link "$HOME/.zshrc" \
     --src src/zsh/zshrc \
     --force
-collect link ~/.config/crestic/config.cfg \
+if [ "$?" -ne 0 ]; then
+    echo -e "$(tput bold)$(tput setaf 1) "$HOME/.zshrc"OR: Could install dotfile "$HOME/.zshrc"$(tput sgr0)" >&2
+    DOTFILES_EXIT_CODE=4
+fi
+
+link "$HOME/.config/crestic/config.cfg" \
     --src src/crestic/config.cfg \
     --create
-collect link ~/.config/gh/config.yml \
+if [ "$?" -ne 0 ]; then
+    echo -e "$(tput bold)$(tput setaf 1)ERROR: Could install dotfile "$HOME/.config/crestic/config.cfg"$(tput sgr0)" >&2
+    DOTFILES_EXIT_CODE=5
+fi
+
+link "$HOME/.config/gh/config.yml" \
     --src src/gh/config.yml \
     --create
-collect link ~/.config/restic/exclude.txt \
+if [ "$?" -ne 0 ]; then
+    echo -e "$(tput bold)$(tput setaf 1)ERROR: Could install dotfile "$HOME/.config/gh/config.yml"$(tput sgr0)" >&2
+    DOTFILES_EXIT_CODE=6
+fi
+
+link "$HOME/.config/restic/exclude.txt" \
     --src src/restic/exclude.txt \
     --create
-collect link ~/.gnupg/gpg-agent.conf \
+if [ "$?" -ne 0 ]; then
+    echo -e "$(tput bold)$(tput setaf 1)ERROR: Could install dotfile "$HOME/.config/restic/exclude.txt"$(tput sgr0)" >&2
+    DOTFILES_EXIT_CODE=7
+fi
+
+link "$HOME/.gnupg/gpg-agent.conf" \
     --if 'gpg -k' \
     --src src/gnupg/gpg-agent.conf
-collect link ~/.ssh/config \
+if [ "$?" -ne 0 ]; then
+    echo -e "$(tput bold)$(tput setaf 1)ERROR: Could install dotfile "$HOME/.gnupg/gpg-agent.conf"$(tput sgr0)" >&2
+    DOTFILES_EXIT_CODE=8
+fi
+
+link "$HOME/.ssh/config" \
     --if 'command -v ssh' \
     --src src/ssh/config
+if [ "$?" -ne 0 ]; then
+    echo -e "$(tput bold)$(tput setaf 1)ERROR: Could install dotfile "$HOME/.ssh/config"$(tput sgr0)" >&2
+    DOTFILES_EXIT_CODE=9
+fi
+
 
 # macOS
-collect link ~/Library/Application\ Support/iTerm2/DynamicProfiles/Profiles.json \
+link "$HOME/Library/Application\ Support/iTerm2/DynamicProfiles/Profiles.json" \
     --if '[ "$(uname -s)" = Darwin ]' \
     --src src/iterm/Profiles.json \
     --create
+if [ "$?" -ne 0 ]; then
+    echo -e "$(tput bold)$(tput setaf 1)ERROR: Could install dotfile "$HOME/Library/Application\ Support/iTerm2/DynamicProfiles/Profiles.json"$(tput sgr0)" >&2
+    DOTFILES_EXIT_CODE=10
+fi
 
-report
+exit $DOTFILES_EXIT_CODE
+

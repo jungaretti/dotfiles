@@ -52,19 +52,23 @@ clean() {
     done
 }
 
-set -e
-
 BASEDIR="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-source "${BASEDIR}/lib/collect.sh"
 
 echo "Cleaning dotfile symlinks..."
 pushd "${BASEDIR}"
 
-set +e
+DOTFILES_EXIT_CODE=0
 
-start
+clean --recurse "$HOME/.config"
+if [ "$?" -ne 0 ]; then
+    echo -e "$(tput bold)$(tput setaf 1)ERROR: Could not clean "$HOME/.config/**"$(tput sgr0)" >&2
+    DOTFILES_EXIT_CODE=2
+fi
 
-collect clean --recurse "$HOME/.config"
-collect clean "$HOME"
+clean "$HOME"
+if [ "$?" -ne 0 ]; then
+    echo -e "$(tput bold)$(tput setaf 1)ERROR: Could not clean "$HOME"$(tput sgr0)" >&2
+    DOTFILES_EXIT_CODE=3
+fi
 
-report
+exit $DOTFILES_EXIT_CODE

@@ -9,6 +9,7 @@ Movies/Infuse
 
 .cargo
 .colima
+.dotnet
 .rustup
 .vscode
 .vscode-server

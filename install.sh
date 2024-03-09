@@ -160,6 +160,14 @@ if [ "$?" -ne 0 ]; then
     DOTFILES_EXIT_CODE=9
 fi
 
+link "$HOME/.config/bat/config" \
+    --src src/bat/config \
+    --create
+if [ "$?" -ne 0 ]; then
+    echo -e "ERROR: Could install dotfile "$HOME/.ssh/config"" >&2
+    DOTFILES_EXIT_CODE=11
+fi
+
 # macOS
 link "$HOME/Library/Application Support/iTerm2/DynamicProfiles/Profiles.json" \
     --if '[ "$(uname -s)" = Darwin ]' \

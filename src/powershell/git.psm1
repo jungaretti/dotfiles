@@ -17,5 +17,5 @@ function ggp {
 }
 
 function ggpnp {
-    ggl && ggp
+    ggl; if ($?) { ggp }
 }

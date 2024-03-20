@@ -89,7 +89,7 @@ alias prune_honeycrisp="crestic honeycrisp@b2 forget --prune && mount_venus && c
 
 # fnm
 if [ -n "$(command -v fnm)" ]; then
-    eval "$(fnm env)"
+    eval "$(fnm env --use-on-cd)"
 fi
 
 # bun

@@ -25,20 +25,23 @@ sudo chsh -s /bin/zsh "$USER"
 
 ### Generate SSH Key
 
-Generate a new SSH key using `ssh-keygen` and add it to GitHub. You can use the [GitHub CLI](https://cli.github.com/manual/) to do that without a browser.
+Use `ssh-keygen` to generate a new SSH key.
 
 ```sh
-# Name the new SSH key
-KEY_LOGIN='<login>'
-KEY_HOST='<hostname>.<home|work>'
+# Set to username@hostname[.home|local]
+KEY_COMMENT=""$USER"@"$(uname -n)""
 
-# Generate a new Ed25519 key
-ssh-keygen -o -a 256 -t ed25519 -C "$KEY_LOGIN@$KEY_HOST"
+ssh-keygen -o -a 256 -t ed25519 -C "$KEY_COMMENT"
+```
 
+#### Add SSH Key to GitHub
+
+You must add the new SSH key to GitHub in order to clone this repository and private repositories. Visit https://github.com/settings/keys or use the [GitHub CLI](https://cli.github.com/manual/) to add the key.
+
+```sh
 # Don't add your SSH key yet!
 gh auth login -s write:public_key -s codespace
 
-# Add your SSH key with a title
 gh ssh-key add ~/.ssh/id_ed25519.pub --title "$KEY_HOST"
 ```
 

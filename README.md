@@ -8,6 +8,21 @@ Dotfiles that make anywhere feel like `/home`.
 
 Are you ready to set up a new computer for me? Fire up your favorite terminal and let's get started!
 
+### Install Oh My Zsh
+
+Install Zsh and [Oh My Zsh](https://ohmyz.sh/).
+
+```sh
+sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+
+# Inspect the install script
+git clone https://github.com/ohmyzsh/ohmyzsh.git
+vim ./tools/install.sh
+
+# Change the default shell to /bin/zsh
+sudo chsh -s /bin/zsh "$USER"
+```
+
 ### Generate SSH Key
 
 Generate a new SSH key using `ssh-keygen` and add it to GitHub. You can use the [GitHub CLI](https://cli.github.com/manual/) to do that without a browser.
@@ -25,18 +40,6 @@ gh auth login -s write:public_key -s codespace
 
 # Add your SSH key with a title
 gh ssh-key add ~/.ssh/id_ed25519.pub --title "$KEY_HOST"
-```
-
-### Install Oh My Zsh
-
-Install Zsh and [Oh My Zsh](https://ohmyz.sh/).
-
-```sh
-gh repo clone ohmyzsh/ohmyzsh
-./ohmyzsh/tools/install.sh
-
-# Using sudo without a password?
-sudo chsh -s /bin/zsh jungaretti
 ```
 
 ### Install (these) Dotfiles

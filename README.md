@@ -50,7 +50,8 @@ gh ssh-key add ~/.ssh/id_ed25519.pub --title "$KEY_HOST"
 Clone this repo and install my dotfiles using `./install.sh`.
 
 ```sh
-gh repo clone jungaretti/dotfiles
+git clone git@github.com:jungaretti/dotfiles.git
+
 cd dotfiles
 ./install.sh
 ```

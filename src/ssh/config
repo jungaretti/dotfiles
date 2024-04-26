@@ -1,3 +1,10 @@
 Include ~/.ssh/config_local
 
 Include ~/.colima/ssh_config
+
+Host galileo
+    HostName galileo.centralus.cloudapp.azure.com
+    IdentityFile ~/.ssh/id_rsa_galileo
+    IdentitiesOnly yes
+    User jungaretti
+    Port 22

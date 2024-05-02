@@ -29,7 +29,7 @@ Use `ssh-keygen` to generate a new SSH key.
 
 ```sh
 # Set to username@hostname[.home|local]
-KEY_COMMENT=""$USER"@"$(uname -n)""
+read KEY_COMMENT
 
 ssh-keygen -o -a 256 -t ed25519 -C "$KEY_COMMENT"
 ```
@@ -42,7 +42,7 @@ You must add the new SSH key to GitHub in order to clone this repository and pri
 # Don't add your SSH key yet!
 gh auth login -s write:public_key -s codespace
 
-gh ssh-key add ~/.ssh/id_ed25519.pub --title "$KEY_HOST"
+gh ssh-key add ~/.ssh/id_ed25519.pub --title "$KEY_COMMENT"
 ```
 
 ### Install (these) Dotfiles

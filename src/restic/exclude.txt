@@ -20,6 +20,7 @@ go
 node_modules
 
 *.fcpbundle/**/Render Files
+*.fcpbundle/**/__*
 Lightroom*.lock
 Lightroom*.lrcat-data
 Lightroom*.lrcat-shm

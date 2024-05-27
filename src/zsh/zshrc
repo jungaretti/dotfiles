@@ -104,8 +104,13 @@ if [ -s "$HOME/.bun/_bun" ]; then
     export PATH="$BUN_INSTALL/bin:$PATH"
 fi
 
-# dotnet
-export PATH="$HOME/.dotnet/tools:$PATH"
+# Fix PATH for dotnet tools
+if [ -d "$HOME/.dotnet/tools" ]; then
+    export PATH="$HOME/.dotnet/tools:$PATH"
+
+    # Remove :/.dotnet/tools from PATH
+    export PATH="$(echo "$PATH" | sed -e 's/:~\/\.dotnet\/tools//')"
+fi
 
 # bat
 export BAT_CONFIG_PATH="$HOME/.config/bat/config"

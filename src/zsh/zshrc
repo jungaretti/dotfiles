@@ -124,5 +124,6 @@ if [ -d "$HOME/.dotnet/tools" ]; then
     export PATH="$(echo "$PATH" | sed -e 's/:~\/\.dotnet\/tools//')"
 fi
 
-# bat
+# bat: cat clone
+# https://github.com/sharkdp/bat
 export BAT_CONFIG_PATH="$HOME/.config/bat/config"

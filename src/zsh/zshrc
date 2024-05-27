@@ -93,6 +93,10 @@ alias prune_honeycrisp="crestic honeycrisp@b2 forget --prune && mount_venus && c
 # Fixes "gpg: signing failed: Inappropriate ioctl for device"
 export GPG_TTY="$(tty)"
 
+# bat: cat clone
+# https://github.com/sharkdp/bat
+export BAT_CONFIG_PATH="$HOME/.config/bat/config"
+
 # fnm: Node version manager
 # https://github.com/Schniz/fnm
 if [ -n "$(command -v fnm)" ]; then
@@ -122,7 +126,3 @@ if [ -d "$HOME/.dotnet/tools" ]; then
     # Remove :/.dotnet/tools from PATH
     export PATH="$(echo "$PATH" | sed -e 's/:~\/\.dotnet\/tools//')"
 fi
-
-# bat: cat clone
-# https://github.com/sharkdp/bat
-export BAT_CONFIG_PATH="$HOME/.config/bat/config"

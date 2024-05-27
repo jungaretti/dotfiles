@@ -84,15 +84,15 @@ alias mount_europa="/usr/bin/osascript -e 'try' -e 'mount volume \"smb://jungare
 alias mount_venus="/usr/bin/osascript -e 'try' -e 'mount volume \"smb://jungaretti@Helium._smb._tcp.local/Venus\"' -e 'end try'"
 alias mount_helium="mount_rainier && mount_denali && mount_europa && mount_venus"
 
+# restic
+alias backup_honeycrisp="crestic honeycrisp@b2 backup && mount_venus && crestic honeycrisp@nas backup"
+alias prune_honeycrisp="crestic honeycrisp@b2 forget --prune && mount_venus && crestic honeycrisp@nas forget --prune"
+
 # Use vim as default editor
 export EDITOR=vim
 
 # Fix git commit signing
 export GPG_TTY="$(tty)"
-
-# restic
-alias backup_honeycrisp="crestic honeycrisp@b2 backup && mount_venus && crestic honeycrisp@nas backup"
-alias prune_honeycrisp="crestic honeycrisp@b2 forget --prune && mount_venus && crestic honeycrisp@nas forget --prune"
 
 # fnm
 if [ -n "$(command -v fnm)" ]; then

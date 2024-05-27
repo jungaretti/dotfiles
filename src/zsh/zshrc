@@ -94,12 +94,22 @@ export EDITOR=vim
 # Fix git commit signing
 export GPG_TTY="$(tty)"
 
-# fnm
+# fnm: Node version manager
+# https://github.com/Schniz/fnm
 if [ -n "$(command -v fnm)" ]; then
     eval "$(fnm env --use-on-cd)"
 fi
 
-# bun
+# pyenv: Python version manager
+# https://github.com/pyenv/pyenv
+if [ -n "$(command -v pyenv)" ]; then
+    export PYENV_ROOT="$HOME/.pyenv"
+    export PATH="$PYENV_ROOT/bin:$PATH"
+    eval "$(pyenv init --path)"
+fi
+
+# bun: JavaScript runtime
+# https://github.com/oven-sh/bun
 if [ -s "$HOME/.bun/_bun" ]; then
     source "$HOME/.bun/_bun"
     export BUN_INSTALL="$HOME/.bun"
@@ -116,10 +126,3 @@ fi
 
 # bat
 export BAT_CONFIG_PATH="$HOME/.config/bat/config"
-
-# pyenv
-if [ -n "$(command -v pyenv)" ]; then
-    export PYENV_ROOT="$HOME/.pyenv"
-    export PATH="$PYENV_ROOT/bin:$PATH"
-    eval "$(pyenv init --path)"
-fi

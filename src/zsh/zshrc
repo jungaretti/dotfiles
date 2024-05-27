@@ -116,7 +116,7 @@ if [ -s "$HOME/.bun/_bun" ]; then
     export PATH="$BUN_INSTALL/bin:$PATH"
 fi
 
-# Fix PATH for dotnet tools
+# .NET CLI
 if [ -d "$HOME/.dotnet/tools" ]; then
     export PATH="$HOME/.dotnet/tools:$PATH"
 

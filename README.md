@@ -36,7 +36,7 @@ sudo chsh -s /bin/zsh "$USER"
 Use `ssh-keygen` to generate a new SSH key.
 
 ```sh
-# Set to username@hostname[.home|local]
+# Set to username@hostname[.home|work]
 read KEY_COMMENT
 
 ssh-keygen -o -a 256 -t ed25519 -C "$KEY_COMMENT"

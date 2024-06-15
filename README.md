@@ -8,6 +8,14 @@ Dotfiles that make anywhere feel like `/home`.
 
 Are you ready to set up a new computer for me? Fire up your favorite terminal and let's get started!
 
+### Install Homebrew
+
+On macOS, [install Homebrew](https://brew.sh/).
+
+```sh
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+```
+
 ### Install Oh My Zsh
 
 Install Zsh and [Oh My Zsh](https://ohmyz.sh/).

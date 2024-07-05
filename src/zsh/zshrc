@@ -89,6 +89,8 @@ alias mount_helium="mount_rainier && mount_denali && mount_europa && mount_venus
 # restic
 alias backup_honeycrisp="crestic honeycrisp@b2 backup && mount_venus && crestic honeycrisp@nas backup"
 alias prune_honeycrisp="crestic honeycrisp@b2 forget --prune && mount_venus && crestic honeycrisp@nas forget --prune"
+alias backup_timberline="crestic timberline@b2 backup && mount_venus && crestic timberline@nas backup"
+alias prune_timberline="crestic timberline@b2 forget --prune && mount_venus && crestic timberline@nas forget --prune"
 
 # Fixes "gpg: signing failed: Inappropriate ioctl for device"
 export GPG_TTY="$(tty)"

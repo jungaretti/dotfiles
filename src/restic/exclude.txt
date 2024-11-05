@@ -27,8 +27,6 @@ Lightroom*.lrcat-wal
 Lightroom*.lrdata
 Lightroom*.lrlibrary
 
-Photos Library.photoslibrary
-
 *.icloud
 *.log
 *.tmp

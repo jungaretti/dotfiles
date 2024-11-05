@@ -1,12 +1,10 @@
 .Trash
 Downloads
 Library
-
 OneDrive
 Movies/Infuse
 
 .cache
-
 .cargo
 .colima
 .dotnet
@@ -21,12 +19,16 @@ node_modules
 
 *.fcpbundle/**/Render Files
 *.fcpbundle/**/__*
+
 Lightroom*.lock
 Lightroom*.lrcat-data
 Lightroom*.lrcat-shm
 Lightroom*.lrcat-wal
 Lightroom*.lrdata
 Lightroom*.lrlibrary
+
 Photos Library.photoslibrary
 
 *.icloud
+*.log
+*.tmp

@@ -80,15 +80,9 @@ export EDITOR=vim
 
 alias lsl="ls -l"
 
-alias mount_rainier="/usr/bin/osascript -e 'try' -e 'mount volume \"smb://jungaretti@Helium._smb._tcp.local/Rainier\"' -e 'end try'"
-alias mount_denali="/usr/bin/osascript -e 'try' -e 'mount volume \"smb://jungaretti@Helium._smb._tcp.local/Denali\"' -e 'end try'"
-alias mount_europa="/usr/bin/osascript -e 'try' -e 'mount volume \"smb://jungaretti@Helium._smb._tcp.local/Europa\"' -e 'end try'"
-alias mount_venus="/usr/bin/osascript -e 'try' -e 'mount volume \"smb://jungaretti@Helium._smb._tcp.local/Venus\"' -e 'end try'"
-alias mount_helium="mount_rainier && mount_denali && mount_europa && mount_venus"
-
 # restic
-alias backup_timberline="crestic timberline@b2 backup && mount_venus && crestic timberline@nas backup"
-alias prune_timberline="crestic timberline@b2 forget --prune && mount_venus && crestic timberline@nas forget --prune"
+alias backup_blackbird="crestic blackbird@b2 backup && crestic blackbird@nas backup"
+alias prune_blackbird="crestic blackbird@b2 forget --prune && crestic blackbird@nas forget --prune"
 
 # Fixes "gpg: signing failed: Inappropriate ioctl for device"
 export GPG_TTY="$(tty)"

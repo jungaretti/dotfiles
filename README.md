@@ -146,7 +146,3 @@ export B2_ACCOUNT_KEY=APPLICATION_KEY
 ```
 
 Create a `<host>.password.txt` file or `export RESTIC_PASSWORD` to unlock the repository automatically. See `src/crestic/config.cfg` for more details.
-
-## Notes
-
-- I use MaterialDark from https://github.com/mbadolato/iTerm2-Color-Schemes.

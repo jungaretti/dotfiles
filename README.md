@@ -43,7 +43,7 @@ ssh-keygen -o -a 256 -t ed25519 -C "$KEY_COMMENT"
 
 #### Add SSH Key to GitHub
 
-You must add the new SSH key to GitHub in order to clone this repository and private repositories. Visit https://github.com/settings/keys or use the [GitHub CLI](https://cli.github.com/manual/) to add the key.
+You must add the new SSH key to GitHub in order to clone this repository. Visit https://github.com/settings/keys or use the [GitHub CLI](https://cli.github.com/manual/) to add the key.
 
 ```sh
 # Don't add your SSH key yet!

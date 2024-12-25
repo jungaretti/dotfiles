@@ -2,9 +2,9 @@
 
 Dotfiles that make anywhere feel like `/home`.
 
-## Setting Up Shop
-
 > "Ond’ io per lo tuo me’ penso e discerno che tu mi segui, e io sarò tua guida, e trarrotti di qui per loco etterno" ([Inferno I, 112-114](https://digitaldante.columbia.edu/dante/divine-comedy/inferno/inferno-1/)).
+
+## Setting Up Shop
 
 Are you ready to set up a new computer for me? Fire up your favorite terminal and let's get started!
 

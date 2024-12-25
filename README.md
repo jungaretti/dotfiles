@@ -22,12 +22,11 @@ Install Zsh and [Oh My Zsh](https://ohmyz.sh/).
 
 ```sh
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
+```
 
-# Inspect the install script
-git clone https://github.com/ohmyzsh/ohmyzsh.git
-vim ./tools/install.sh
+If needed, change the default shell to Zsh.
 
-# Change the default shell to /bin/zsh
+```
 sudo chsh -s /bin/zsh "$USER"
 ```
 

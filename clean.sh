@@ -65,6 +65,12 @@ if [ "$?" -ne 0 ]; then
     DOTFILES_EXIT_CODE=2
 fi
 
+clean "$HOME/.ssh"
+if [ "$?" -ne 0 ]; then
+    echo -e "ERROR: Could not clean "$HOME/.ssh/**"" >&2
+    DOTFILES_EXIT_CODE=2
+fi
+
 clean "$HOME"
 if [ "$?" -ne 0 ]; then
     echo -e "ERROR: Could not clean "$HOME"" >&2

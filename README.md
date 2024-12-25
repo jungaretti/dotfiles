@@ -59,7 +59,7 @@ gh auth login -s write:public_key
 gh ssh-key add ~/.ssh/id_ed25519.pub --title "$KEY_COMMENT"
 ```
 
-### Install (these) Dotfiles
+## Install (these) Dotfiles
 
 Clone this repo and install my dotfiles using `./install.sh`.
 

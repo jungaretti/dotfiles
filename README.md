@@ -145,4 +145,34 @@ export B2_ACCOUNT_ID=KEY_ID
 export B2_ACCOUNT_KEY=APPLICATION_KEY
 ```
 
-Create a `<host>.password.txt` file or `export RESTIC_PASSWORD` to unlock the repository automatically. See `src/crestic/config.cfg` for more details.
+### Generate Repository Password
+
+Generate a new repository password. Then, create a `<host>.password.txt` file in `~/.config/restic/`.
+
+### Add Configuration to Crestic
+
+Add new `b2` and `nas` configurations to [`src/crestic/config.cfg`](src/crestic/config.cfg) for the new computer.
+
+```
+[HOSTNAME@]
+password-file: ~/.config/restic/HOSTNAME.password.txt
+
+[HOSTNAME@b2]
+repo: b2:restic-HOSTNAME:HOSTNAME.restic
+
+[HOSTNAME@nas]
+repo: /Volumes/Venus/HOSTNAME.restic
+
+[HOSTNAME@.backup]
+host: HOSTNAME
+_arguments: /Users/jungaretti
+```
+
+### Initialize Repository
+
+Initialize new `b2` and `nas` repositories.
+
+```
+blackbird@b2 init
+blackbird@nas init
+```

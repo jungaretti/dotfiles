@@ -47,7 +47,7 @@ You must add the new SSH key to GitHub in order to clone this repository. Visit 
 
 ```sh
 # Don't add your SSH key yet!
-gh auth login -s write:public_key -s codespace
+gh auth login -s write:public_key
 
 gh ssh-key add ~/.ssh/id_ed25519.pub --title "$KEY_COMMENT"
 ```

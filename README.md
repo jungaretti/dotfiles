@@ -121,11 +121,23 @@ export PATH="$PYENV_ROOT/bin:$PATH"
 eval "$(pyenv init --path)"
 ```
 
-### Configure B2 Backups
+## Configure Backups
 
 I use [restic](https://github.com/restic/restic) and [crestic](https://github.com/nils-werner/crestic) to back up my data to [Backblaze B2](https://www.backblaze.com/b2/cloud-storage.html).
 
-Log into Backblaze to create a new storage bucket and generate a new application key. Then, add the following lines to `~/.zshenv` and paste their values from Backblaze.
+```sh
+sudo cp ./src/crestic/crestic.py /usr/local/bin/crestic
+```
+
+### Create Storage Bucket
+
+Log into [Backblaze](https://secure.backblaze.com/b2_buckets.htm) and [create a new storage bucket](https://www.backblaze.com/docs/cloud-storage-create-and-manage-buckets#create-a-bucket).
+
+### Generate Application Key
+
+Next, generate a [new application key](https://secure.backblaze.com/app_keys.htm) for the new storage bucket.
+
+Then, add the following lines to `~/.zshenv` and paste their values from Backblaze.
 
 ```sh
 # Backblaze application key

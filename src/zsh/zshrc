@@ -90,33 +90,3 @@ export GPG_TTY="$(tty)"
 # bat: cat clone
 # https://github.com/sharkdp/bat
 export BAT_CONFIG_PATH="$HOME/.config/bat/config"
-
-# fnm: Node version manager
-# https://github.com/Schniz/fnm
-if [ -n "$(command -v fnm)" ]; then
-    eval "$(fnm env --use-on-cd)"
-fi
-
-# pyenv: Python version manager
-# https://github.com/pyenv/pyenv
-if [ -n "$(command -v pyenv)" ]; then
-    export PYENV_ROOT="$HOME/.pyenv"
-    export PATH="$PYENV_ROOT/bin:$PATH"
-    eval "$(pyenv init --path)"
-fi
-
-# bun: JavaScript runtime
-# https://github.com/oven-sh/bun
-if [ -s "$HOME/.bun/_bun" ]; then
-    source "$HOME/.bun/_bun"
-    export BUN_INSTALL="$HOME/.bun"
-    export PATH="$BUN_INSTALL/bin:$PATH"
-fi
-
-# .NET CLI
-if [ -d "$HOME/.dotnet/tools" ]; then
-    export PATH="$HOME/.dotnet/tools:$PATH"
-
-    # Remove :/.dotnet/tools from PATH
-    export PATH="$(echo "$PATH" | sed -e 's/:~\/\.dotnet\/tools//')"
-fi

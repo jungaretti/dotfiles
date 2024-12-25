@@ -16,7 +16,7 @@ On macOS, [install Homebrew](https://brew.sh/).
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
-Add Oh My Zsh's `eval` command to `~/.zprofile`.
+Then, add Oh My Zsh to `~/.zprofile`.
 
 ```
 # Homebrew
@@ -70,14 +70,56 @@ cd dotfiles
 ./install.sh
 ```
 
-### Install Apps and Tools
+## Install (other) Stuff
 
-Install tools with custom installers:
+Install developer tools with custom installers. Then, see [jungaretti/stuff](https://github.com/jungaretti/stuff) to install all of my apps and tools.
 
-- [rustup](https://rustup.rs/)
-- [fnm](https://github.com/Schniz/fnm)
+### rustup
 
-Check out [jungaretti/stuff](https://github.com/jungaretti/stuff) to install all of my apps and tools.
+Install [`rustup`](https://rustup.rs/).
+
+```sh
+curl --proto '=https' --tlsv1.2 -sSf https://sh.rustup.rs | sh
+```
+
+Then, add Rustup to `~/.zprofile`.
+
+```sh
+# rustup
+. "$HOME/.cargo/env"
+```
+
+### fnm
+
+Install [fnm](https://github.com/Schniz/fnm?tab=readme-ov-file#installation).
+
+```sh
+curl -fsSL https://fnm.vercel.app/install | bash -s -- --skip-shell
+```
+
+Then, add fnm to `~/.zprofile`.
+
+```sh
+# fnm
+eval "$(fnm env --use-on-cd --shell zsh)"
+```
+
+### pyenv
+
+Install [pyenv](https://github.com/pyenv/pyenv?tab=readme-ov-file#installation).
+
+```sh
+brew install pyenv
+```
+
+Then, add pyenv to `~/.zprofile`.
+
+```sh
+# pyenv
+export PYENV_ROOT="$HOME/.pyenv"
+export PATH="$PYENV_ROOT/bin:$PATH"
+eval "$(pyenv init --path)"
+```
 
 ### Configure B2 Backups
 

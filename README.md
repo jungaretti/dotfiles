@@ -16,6 +16,13 @@ On macOS, [install Homebrew](https://brew.sh/).
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
 ```
 
+Add Oh My Zsh's `eval` command to `~/.zprofile`.
+
+```
+# Homebrew
+eval "$(/opt/homebrew/bin/brew shellenv)"
+```
+
 ### Install Oh My Zsh
 
 Install Zsh and [Oh My Zsh](https://ohmyz.sh/).
